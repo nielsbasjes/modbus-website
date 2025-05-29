@@ -1,5 +1,6 @@
 +++
 title = 'Design'
+weight = 60
 +++
 
 My original design sketches:

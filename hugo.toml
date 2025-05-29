@@ -10,16 +10,12 @@ title = 'Modbus Schema Toolkit'
 # Prefix URL to edit current page. Will display an "Edit this page" button on top right hand corner of every page.
 # Useful to give opportunity to people to create merge request for your doc.
 # See the config.toml file from this documentation site to have an example.
-editURL = "https://github.com/nielsbasjes/modbus-website/tree/main/website/content/"
+editURL = "https://github.com/nielsbasjes/modbus-website/tree/main/content/"
 # Author of the site, will be used in meta information
 author.name = "Niels Basjes"
 # Shows a checkmark for visited pages on the menu
-showVisitedLinks = true
+showVisitedLinks = false
 
-# Change default color scheme with a variant one. Can be "red", "blue", "green".
-#themeVariant = "yauaa"
-# Provide a list of custom css files to load relative from the `static/` folder in the site root.
-#  custom_css = ["css/foo.css", "css/bar.css"]
 # Change the title separator. Default to "::".
 titleSeparator = " | "
 
@@ -27,8 +23,6 @@ disableExplicitIndexURLs = true
 linkTitle = 'Modbus Schema'
 collapsibleMenu = false
 landingPageName = "<i class='fas fa-home'></i> Modbus Schema Toolkit"
-alwaysopen = true
-
 
 [params.relearn.dependencies]
   [params.relearn.dependencies.math]
@@ -37,11 +31,6 @@ alwaysopen = true
     name = 'Mermaid'
   [params.relearn.dependencies.openapi]
     name = 'OpenApi'
-
-
-[author]
-email = 'niels@basjes.nl'
-name = 'Niels Basjes'
 
 # -------------------------------------------------------------
 [[menu.shortcuts]]
@@ -126,3 +115,8 @@ weight = 30
 #name = '<img alt="License" src="https://img.shields.io/:license-apache-blue.svg"/>'
 #url = "https://www.apache.org/licenses/LICENSE-2.0.html"
 #weight = 40
+
+[[menu.shortcuts]]
+name = '<img alt="If this project has business value for you then dont hesitate to support me with a small donation." src="https://img.shields.io/badge/Sponsor%20me-via%20Github-darkgreen.svg" />'
+url = "https://github.com/sponsors/nielsbasjes"
+weight = 80
