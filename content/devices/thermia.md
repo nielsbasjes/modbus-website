@@ -9,4 +9,4 @@ Page is not yet finished. Is incomplete and will contain inaccuracies.
 
 Thermia Genesis
 
-https://github.com/nielsbasjes/modbus-devices/tree/main/modbus-device-thermia
+https://github.com/nielsbasjes/modbus-devices/tree/main/modbus-device-thermia-genesis
