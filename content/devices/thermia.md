@@ -1,5 +1,5 @@
 +++
-title = 'Thermia'
+title = 'Thermia Genesis'
 weight = 30
 +++
 
@@ -7,4 +7,6 @@ weight = 30
 Page is not yet finished. Is incomplete and will contain inaccuracies.
 {{% /notice %}}
 
-Thermia Genysis
+Thermia Genesis
+
+https://github.com/nielsbasjes/modbus-devices/tree/main/modbus-device-thermia

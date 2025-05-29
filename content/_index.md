@@ -27,7 +27,7 @@ This does make it easily usable in Kotlin, Java and also Kotlin script applicati
   
 - A collection ready to run schemas have been included (all the devices I have...):
   - Eastron SDM 630
-  - Thermia Genisys Heatpumps
+  - Thermia Genesis Heatpumps
   - My SMA Solar inverter (using SunSpec)
 
 - A library to handle SunSpec devices.
