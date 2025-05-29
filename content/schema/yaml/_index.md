@@ -9,11 +9,6 @@ Page is not yet finished. Is incomplete and will contain inaccuracies.
 
 You can create the schema for your device!
 
-xx
-{{< code language="yaml" source="schema/yaml/example.yaml" >}}
-xx
+{{< code language="yaml" source="code/example.yaml" >}}
 
-```yaml
-zz
-```
 

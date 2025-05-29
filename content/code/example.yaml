@@ -3,6 +3,15 @@ description: 'Demo based on a SunSpec device schema'
 schemaFeatureLevel: 1
 
 blocks:
+  - id: 'SunSpecHeader'
+    description: 'The header that starts the SunSpec model list'
+    fields:
+      - id: 'SunS'
+        description: 'The SunS header'
+        immutable: true
+        system: true
+        expression: 'utf8(hr:40000 # 2)'
+
   - id:          'Model 1'
     description: 'Common: All SunSpec compliant devices must include this as the first model'
 
