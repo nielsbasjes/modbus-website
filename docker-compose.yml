@@ -1,0 +1,9 @@
+services:
+  local-site-hosting:
+    build: .
+    volumes:
+      - ./:/website:rw
+    working_dir: /website
+    command: hugo server --bind 0.0.0.0 --renderToMemory -c /website --logLevel debug
+    ports:
+      - "1313:1313"
