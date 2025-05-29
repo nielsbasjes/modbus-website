@@ -49,15 +49,15 @@ name = "<i class='fab fa-git-square'></i> Modbus Schema: Repo"
 url = "https://github.com/nielsbasjes/modbus-schema"
 weight = 10
 
-[[menu.shortcuts]]
-name = "<i class='fa fa-bug'></i> Modbus Schema: Issues"
-url = "https://github.com/nielsbasjes/modbus-schema/issues"
-weight = 11
-
-[[menu.shortcuts]]
-name = '<i class="fa-solid fa-screwdriver-wrench"></i> Modbus Schema: <img alt="Github actions Build status" src="https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-schema/build.yml?branch=main"/>'
-url = "https://github.com/nielsbasjes/modbus-schema/actions"
-weight = 12
+#[[menu.shortcuts]]
+#name = "<i class='fa fa-bug'></i> Modbus Schema: Issues"
+#url = "https://github.com/nielsbasjes/modbus-schema/issues"
+#weight = 11
+#
+#[[menu.shortcuts]]
+#name = '<i class="fa-solid fa-screwdriver-wrench"></i> Modbus Schema: <img alt="Github actions Build status" src="https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-schema/build.yml?branch=main"/>'
+#url = "https://github.com/nielsbasjes/modbus-schema/actions"
+#weight = 12
 
 # -------------------------------------------------------------
 [[menu.shortcuts]]
@@ -65,15 +65,15 @@ name = "<i class='fab fa-git-square'></i> Device Schemas: Repo"
 url = "https://github.com/nielsbasjes/modbus-devices"
 weight = 20
 
-[[menu.shortcuts]]
-name = "<i class='fa fa-bug'></i> Device Schemas: Issues"
-url = "https://github.com/nielsbasjes/modbus-devices/issues"
-weight = 21
-
-[[menu.shortcuts]]
-name = '<i class="fa-solid fa-screwdriver-wrench"></i> Device Schemas: <img alt="Github actions Build status" src="https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-schema/build.yml?branch=main"/>'
-url = "https://github.com/nielsbasjes/modbus-devices/actions"
-weight = 22
+#[[menu.shortcuts]]
+#name = "<i class='fa fa-bug'></i> Device Schemas: Issues"
+#url = "https://github.com/nielsbasjes/modbus-devices/issues"
+#weight = 21
+#
+#[[menu.shortcuts]]
+#name = '<i class="fa-solid fa-screwdriver-wrench"></i> Device Schemas: <img alt="Github actions Build status" src="https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-schema/build.yml?branch=main"/>'
+#url = "https://github.com/nielsbasjes/modbus-devices/actions"
+#weight = 22
 
 # -------------------------------------------------------------
 [[menu.shortcuts]]
@@ -81,15 +81,15 @@ name = "<i class='fab fa-git-square'></i> Sunspec: Repo"
 url = "https://github.com/nielsbasjes/sunspec-device"
 weight = 30
 
-[[menu.shortcuts]]
-name = "<i class='fa fa-bug'></i> Sunspec: Issues"
-url = "https://github.com/nielsbasjes/sunspec-device/issues"
-weight = 31
-
-[[menu.shortcuts]]
-name = '<i class="fa-solid fa-screwdriver-wrench"></i> Sunspec: <img alt="Github actions Build status" src="https://img.shields.io/github/actions/workflow/status/nielsbasjes/sunspec-device/build.yml?branch=main"/>'
-url = "https://github.com/nielsbasjes/sunspec-device/actions"
-weight = 32
+#[[menu.shortcuts]]
+#name = "<i class='fa fa-bug'></i> Sunspec: Issues"
+#url = "https://github.com/nielsbasjes/sunspec-device/issues"
+#weight = 31
+#
+#[[menu.shortcuts]]
+#name = '<i class="fa-solid fa-screwdriver-wrench"></i> Sunspec: <img alt="Github actions Build status" src="https://img.shields.io/github/actions/workflow/status/nielsbasjes/sunspec-device/build.yml?branch=main"/>'
+#url = "https://github.com/nielsbasjes/sunspec-device/actions"
+#weight = 32
 
 
 
@@ -122,7 +122,7 @@ weight = 32
 #All of this was created by [Niels Basjes](https://niels.basjes.nl/).
 
 
-[[menu.shortcuts]]
-name = '<img alt="License" src="https://img.shields.io/:license-apache-blue.svg"/>'
-url = "https://www.apache.org/licenses/LICENSE-2.0.html"
-weight = 40
+#[[menu.shortcuts]]
+#name = '<img alt="License" src="https://img.shields.io/:license-apache-blue.svg"/>'
+#url = "https://www.apache.org/licenses/LICENSE-2.0.html"
+#weight = 40

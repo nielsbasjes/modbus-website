@@ -3,6 +3,10 @@ title = 'Schema Specification'
 weight = 10
 +++
 
+{{% notice style="red" icon="bug" title="Incomplete documentation" %}}
+Page is not yet finished. Is incomplete and will contain inaccuracies.
+{{% /notice %}}
+
 # Introduction
 This is a way of defining a schema for a modbus device.
 It includes way of specifying sets of registers and methods that manipulate and interpret these registers.

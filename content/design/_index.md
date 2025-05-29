@@ -2,6 +2,9 @@
 title = 'Design'
 +++
 
+My original design sketches:
+
+
 ```mermaid
 mindmap
   root((Usable Modbus))

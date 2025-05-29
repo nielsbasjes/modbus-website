@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>nl.example</groupId>
+    <artifactId>modbus-consumer</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>nl.basjes.modbus</groupId>
+                <artifactId>modbus-schema-maven-plugin</artifactId>
+                <version>0.5.1</version>
+
+                <configuration>
+                    <modbusSchemaFile>example.yaml</modbusSchemaFile>
+                    <packageName>nl.example</packageName>
+                    <className>Example</className>
+                    <language>kotlin</language>
+                </configuration>
+
+                <executions>
+                    <execution><id>Generate Main Class</id><goals><goal>generate-main</goal></goals></execution>
+                    <execution><id>Generate Test Class</id><goals><goal>generate-test</goal></goals></execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+
+    </build>
+</project>

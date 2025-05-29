@@ -3,5 +3,5 @@ title = 'Device schemas'
 weight = 50
 +++
 
-The Schemas we have
+The devices for which I have created schemas
 {{% children %}}
