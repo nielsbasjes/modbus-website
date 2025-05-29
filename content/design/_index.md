@@ -3,7 +3,11 @@ title = 'Design'
 weight = 60
 +++
 
-My original design sketches:
+{{% notice style="red" icon="info" title="Original sketches" %}}
+My original design sketches from a few years ago (~2023). Looking back a lot has worked out already.
+{{% /notice %}}
+
+:
 
 
 ```mermaid
