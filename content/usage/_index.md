@@ -7,17 +7,30 @@ weight = 20
 Page is not yet finished. Is incomplete and will contain inaccuracies.
 {{% /notice %}}
 
-Usage...
+Usage... (Only Kotlin Script has some documentation at this time)
+{{% children %}}
 
-{{< tabs >}}
-{{% tab title="Kotlin" %}}
-```kotlin
-println("Hello World!")
-```
-{{% /tab %}}
-{{% tab title="Java" %}}
-```java
-System.out.println("Hello World!");
-```
-{{% /tab %}}
-{{< /tabs >}}
+
+[//]: # ({{< tabs >}})
+
+[//]: # ({{% tab title="Kotlin" %}})
+
+[//]: # (```kotlin)
+
+[//]: # (println&#40;"Hello World!"&#41;)
+
+[//]: # (```)
+
+[//]: # ({{% /tab %}})
+
+[//]: # ({{% tab title="Java" %}})
+
+[//]: # (```java)
+
+[//]: # (System.out.println&#40;"Hello World!"&#41;;)
+
+[//]: # (```)
+
+[//]: # ({{% /tab %}})
+
+[//]: # ({{< /tabs >}})

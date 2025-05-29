@@ -23,8 +23,18 @@
                 </configuration>
 
                 <executions>
-                    <execution><id>Generate Main Class</id><goals><goal>generate-main</goal></goals></execution>
-                    <execution><id>Generate Test Class</id><goals><goal>generate-test</goal></goals></execution>
+                    <execution>
+                        <id>Generate Main Class</id>
+                        <goals>
+                            <goal>generate-main</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>Generate Test Class</id>
+                        <goals>
+                            <goal>generate-test</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
 
