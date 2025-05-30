@@ -20,7 +20,7 @@ So if you have a schema
 You can generate native code during the build by putting this in the pom.xml:
 
 {{< notice style="green" icon="screwdriver-wrench" title="pom.xml" expanded="true" >}}
-{{< code language="kotlin" source="/code/pom.xml" >}}
+{{< code language="xml" source="/code/pom.xml" >}}
 {{< /notice >}}
 
 And then doing this

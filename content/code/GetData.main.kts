@@ -2,6 +2,7 @@
 
 // Include the needed libraries
 @file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.5.1")
+@file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.5.1")
 
 // Regular Kotlin import statements
 import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT
