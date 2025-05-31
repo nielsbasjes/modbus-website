@@ -30,8 +30,12 @@ ModbusDevicePlc4j("modbus-tcp:tcp://${modbusIp}:${modbusPort}?unit-identifier=${
     println(" done")
 
     // Read the schema by interrogating the device (so no Yaml file).
-    // In general this will result in many blocks and hundred of Fields (My Solar inverter has 19 Blocks and 602 Fields).
-    val device = SunspecDevice.generate(modbusDevice, "Demo", true) ?: throw ModbusException("Unable to generate SunSpec Schema") as Throwable
+    // In general this will result in many blocks and hundreds of Fields (My Solar inverter has 19 Blocks and 602 Fields).
+    val device = SunspecDevice.generate(
+        modbusDevice, // Interrogate this device
+        "Demo",       // Give it a name (Optional)
+        true,         // true = Skip generating a fake Schema Block for a unknown models
+    ) ?: throw ModbusException("Unable to generate SunSpec Schema")
 
     println("The SchemaDevice for this specific SunSpec device has ${device.blocks.size} Blocks with a total of ${device.fields.size} fields.")
 
