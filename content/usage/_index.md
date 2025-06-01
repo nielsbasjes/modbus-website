@@ -3,10 +3,6 @@ title = 'Usage'
 weight = 20
 +++
 
-{{% notice style="orange" icon="hand-spock" title="Mostly complete documentation" %}}
-Please help me find any inaccuracies or things that are not clear.
-{{% /notice %}}
-
 ## Key components
 - **Address**
   - An immutable representation of a modbus address which can handle many ways to specify a modbus address.
@@ -67,6 +63,42 @@ And then as often as you like (and your hardware supports!):
   - Now the library will retrieve the needed modbus register values and remember them. This also includes when these were retrieved !
 - For each field you can now get the actual value
 
+
+## Add the main library to you project
+
+You can either do the direct 
+```xml
+<dependency>
+  <groupId>nl.basjes.modbus</groupId>
+    <artifactId>modbus-schema-device</artifactId>
+  <version>{{%modbus-schema-parent-version%}}</version>
+</dependency>
+```
+
+or use the provided bom
+
+```xml
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>nl.basjes.modbus</groupId>
+      <artifactId>modbus-schema-bom</artifactId>
+      <version>{{%modbus-schema-parent-version%}}</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  <dependencies>
+<dependencyManagement>
+```
+
+and then later do the simpler
+
+```xml
+<dependency>
+  <groupId>nl.basjes.modbus</groupId>
+  <artifactId>modbus-schema-device</artifactId>
+</dependency>
+```
 
 ## Creating a SchemaDevice
 

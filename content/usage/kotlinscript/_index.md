@@ -3,10 +3,6 @@ title = 'Kotlinscript'
 weight = 20
 +++
 
-{{% notice style="orange" icon="hand-spock" title="Mostly complete documentation" %}}
-Please help me find any inaccuracies or things that are not clear.
-{{% /notice %}}
-
 This toolkit works great on my Raspberry PI 3 using Kotlin script.
 
 What you need:

@@ -15,8 +15,6 @@ import java.io.File
 
 // The hostname to connect to
 val modbusIp          = "modbus.iot.basjes.nl"
-
-// Use the standards for SunSpec to connect to the device
 val modbusPort        = MODBUS_STANDARD_TCP_PORT
 val modbusUnit        = 1
 

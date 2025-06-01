@@ -3,10 +3,6 @@ title = 'Schema'
 weight = 30
 +++
 
-{{% notice style="red" icon="bug" title="Incomplete documentation" %}}
-Page is not yet finished. Is incomplete and will contain inaccuracies.
-{{% /notice %}}
-
 # Schema concept:
 There are modbus devices that (within a single function and set of registers) have defined blocks with registers that belong together.
 
