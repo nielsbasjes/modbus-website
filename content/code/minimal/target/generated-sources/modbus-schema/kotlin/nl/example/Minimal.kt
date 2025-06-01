@@ -1,5 +1,5 @@
 //
-// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.5.1
+// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.6.0
 // Using the builtin template to generate Kotlin MAIN code.
 // https://modbus.basjes.nl
 //
@@ -26,10 +26,6 @@ import nl.basjes.modbus.schema.utils.StringTable
 open class Minimal {
 
     val schemaDevice = SchemaDevice()
-
-    init {
-        require(schemaDevice.initialize()) { "Unable to initialize schema device" }
-    }
 
     val tests = schemaDevice.tests
 
@@ -95,9 +91,16 @@ open class Minimal {
          * We no longer want this field to be kept up-to-date
          */
         fun unNeed() = field.unNeed()
+        /**
+         * The unit of the returns value
+         */
+        val unit =  field.unit
+        /**
+         * The description of the Field
+         */
+        val description = field.description
         override fun toString(): String = if (value == null) { "null" } else { value.toString() }
     }
-
 
     // ==========================================
     /**
@@ -171,6 +174,10 @@ open class Minimal {
         table.withHeaders("Block", "Field", "Value")
         block1  .toStringTable(table)
         return table.toString()
+    }
+
+    init {
+        require(schemaDevice.initialize()) { "Unable to initialize schema device" }
     }
 
 }

@@ -7,13 +7,20 @@
     <artifactId>modbus-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+
+        <modbus-schema.version>0.6.0</modbus-schema.version>
+    </properties>
+
     <build>
         <plugins>
 
             <plugin>
                 <groupId>nl.basjes.modbus</groupId>
                 <artifactId>modbus-schema-maven-plugin</artifactId>
-                <version>0.5.1</version>
+                <version>${modbus-schema.version}</version>
 
                 <configuration>
                     <modbusSchemaFile>example.yaml</modbusSchemaFile>

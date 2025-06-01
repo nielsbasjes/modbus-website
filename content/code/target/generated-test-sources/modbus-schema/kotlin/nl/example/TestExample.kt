@@ -1,5 +1,5 @@
 //
-// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.5.1
+// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.6.0
 // Using the builtin template to generate Kotlin TEST code.
 // https://modbus.basjes.nl
 //
@@ -36,7 +36,15 @@ internal class TestExample {
     fun verifyProvidedTest_ADemonstrationTestScenario() {
         val modbusDevice = MockedModbusDevice.builder().build()
         val example = Example().connect(modbusDevice)
-        modbusDevice.addRegisters(Address.of("hr:40000"), "5375 6E53 0001 0042 534D 4100 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 5342 332E 362D 3141 562D 3431 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 342E 3031 2E31 352E 5200 0000 0000 0000 3330 3035 3036 3734 3135 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 FFFF 8000")
+        modbusDevice.addRegisters(Address.of("hr:40000"), """
+            5375 6E53 0001 0042 534D 4100 0000 0000 0000 0000
+            0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+            5342 332E 362D 3141 562D 3431 0000 0000 0000 0000
+            0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+            0000 0000 0000 0000 342E 3031 2E31 352E 5200 0000
+            0000 0000 3330 3035 3036 3734 3135 0000 0000 0000
+            0000 0000 0000 0000 0000 0000 0000 0000 FFFF 8000
+            """.trimIndent());
         example.updateAll()
         assertEquals("SMA", example.model1.mn.value)
         assertEquals("SB3.6-1AV-41", example.model1.md.value)
