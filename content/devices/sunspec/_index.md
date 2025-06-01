@@ -22,6 +22,16 @@ The SunSpec library I created does just that:
 - Interrogate the device which models are present and at what address 
 - Use that list to convert the SunSpec models into a Modbus Schema for the device at that point in time.
 
+
+```xml
+<dependency>
+  <groupId>nl.basjes.sunspec</groupId>
+  <artifactId>sunspec-device</artifactId>
+  <version>{{%sunspec-device-version%}}</version>
+</dependency>
+```
+
+
 ```kotlin
 // Read the schema by interrogating the device.
 // In general this will result in many blocks and hundreds of Fields
@@ -32,6 +42,11 @@ val device = SunspecDevice.generate(
     true,         // true = Skip generating a fake Schema Block for a unknown models
 ) ?: throw ModbusException("Unable to generate SunSpec Schema")
 ```
+
+> [!WARNING] Persisting a SunSpec schema has risks!
+> Persisting the schema of a SunSpec device to a Yaml file or to generated code is a risky operation.
+> **You cannot assume that this code is usable for other devices also.** You cannot even assume it is usable on the SAME device after a software update.
+> If you want to do this then it is recommended to include checks in the code if all the Fields in "Model 1" (the identification of the device including brand, type, serial number and software version) are the values that match the device for which it was generated.
 
 ## Lists of ...
 
