@@ -1,8 +1,8 @@
 #!/usr/bin/env kotlin
 
 // Include the needed libraries
-@file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.5.1")
-@file:DependsOn("nl.basjes.sunspec:sunspec-device:0.4.0")
+@file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.6.0")
+@file:DependsOn("nl.basjes.sunspec:sunspec-device:0.4.1")
 
 // Regular Kotlin import statements
 import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT

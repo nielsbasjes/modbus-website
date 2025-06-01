@@ -1,8 +1,8 @@
 #!/usr/bin/env kotlin
 
-@file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.5.1")
-@file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.5.1")
-@file:DependsOn("nl.basjes.modbus.devices:modbus-device-thermia-genesis:0.2.3-SNAPSHOT")
+@file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.6.0")
+@file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.6.0")
+@file:DependsOn("nl.basjes.modbus.devices:modbus-device-thermia-genesis:0.3.0")
 
 import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT
 import nl.basjes.modbus.device.plc4j.ModbusDevicePlc4j
