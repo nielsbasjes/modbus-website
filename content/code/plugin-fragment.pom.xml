@@ -1,0 +1,27 @@
+<plugin>
+    <groupId>nl.basjes.modbus</groupId>
+    <artifactId>modbus-schema-maven-plugin</artifactId>
+    <version>${modbus-schema.version}</version>
+
+    <configuration>
+        <modbusSchemaFile>minimal.yaml</modbusSchemaFile>
+        <packageName>nl.example</packageName>
+        <className>Minimal</className>
+        <language>kotlin</language>
+    </configuration>
+
+    <executions>
+        <execution>
+            <id>Generate Main Class</id>
+            <goals>
+                <goal>generate-main</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>Generate Test Class</id>
+            <goals>
+                <goal>generate-test</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>

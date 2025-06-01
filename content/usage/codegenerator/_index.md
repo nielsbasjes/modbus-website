@@ -13,14 +13,14 @@ It uses [Apache Freemarker](https://freemarker.apache.org/) as the template engi
 
 So if you have a schema
 
-{{< notice style="green" icon="screwdriver-wrench" title="example.yaml" expanded="true" >}}
-{{< code language="yaml" source="/code/example.yaml" >}}
+{{< notice style="green" icon="screwdriver-wrench" title="minimal.yaml" expanded="true" >}}
+{{< code language="yaml" source="/code/minimal/minimal.yaml" >}}
 {{< /notice >}}
 
 You can generate native code during the build by putting this in the pom.xml:
 
 {{< notice style="green" icon="screwdriver-wrench" title="pom.xml" expanded="true" >}}
-{{< code language="xml" source="/code/pom.xml" >}}
+{{< code language="xml" source="/code/plugin-fragment.pom.xml" >}}
 {{< /notice >}}
 
 And then doing this
@@ -28,11 +28,19 @@ And then doing this
 mvn generate-sources generate-test-sources 
 ```
 will generate code like this:
-{{< notice style="blue" icon="screwdriver-wrench" title="/target/generated-sources/modbus-schema/kotlin/nl/example/Example.kt" expanded="false" >}}
-{{< code language="kotlin" source="/code/target/generated-sources/modbus-schema/kotlin/nl/example/Example.kt" >}}
+{{< notice style="blue" icon="screwdriver-wrench" title="/target/generated-sources/modbus-schema/kotlin/nl/example/Minimal.kt" expanded="false" >}}
+{{< code language="kotlin" source="/code/minimal/target/generated-sources/modbus-schema/kotlin/nl/example/Minimal.kt" >}}
 {{< /notice >}}
 
 and tests that recreate all provided testcases as junit tests:
-{{< notice style="blue" icon="screwdriver-wrench" title="/target/generated-test-sources/modbus-schema/kotlin/nl/example/TestExample.kt" expanded="false" >}}
-{{< code language="kotlin" source="/code/target/generated-test-sources/modbus-schema/kotlin/nl/example/TestExample.kt" >}}
+{{< notice style="blue" icon="screwdriver-wrench" title="/target/generated-test-sources/modbus-schema/kotlin/nl/example/TestMinimal.kt" expanded="false" >}}
+{{< code language="kotlin" source="/code/minimal/target/generated-test-sources/modbus-schema/kotlin/nl/example/TestMinimal.kt" >}}
 {{< /notice >}}
+
+And because a lot of the null checks and returntype related things have been generated into the code this all makes using the schema a lot easier:
+
+
+{{< notice style="green" icon="screwdriver-wrench" title="/src/main/kotlin/nl/example/MinimalDemo.kt" expanded="true" >}}
+{{< code language="kotlin" source="/code/minimal/src/main/kotlin/nl/example/MinimalDemo.kt" >}}
+{{< /notice >}}
+
