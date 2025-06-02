@@ -159,9 +159,15 @@ Some of the fields you get from this (with the values from the test case I have)
 
 
 ## Example
-An example on how this can be used in a Kotlin Script 
+Two examples on how this can be used in a Kotlin Script 
 
-{{< notice style="green" icon="screwdriver-wrench" title="GetSunSpec.main.kts" expanded="false" >}}
+A basic example to simply dump everything to the console
+{{< notice style="blue" icon="screwdriver-wrench" title="GetSunSpecFullDump.main.kts" expanded="true" >}}
+{{< code language="kotlin" source="code/GetSunSpecFullDump.main.kts" >}}
+{{< /notice >}}
+
+A basic example to get specific values
+{{< notice style="green" icon="screwdriver-wrench" title="GetSunSpec.main.kts" expanded="true" >}}
 {{< code language="kotlin" source="code/GetSunSpec.main.kts" >}}
 {{< /notice >}}
 
