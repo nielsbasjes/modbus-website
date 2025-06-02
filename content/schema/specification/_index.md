@@ -24,7 +24,7 @@ The interpreted values can then be combined to form the desired end result.
 
 ## Register addresses
 
-In the modbus world the `defacto` way of specifying a modbus register is the `modbus notation`.
+In the modbus world the `defacto` way of specifying a modbus register is the `Modicon notation`.
 
 This combines the type of register with a register number in the 1 to 9999 range.
 The physical address of such a register is 1 lower (i.e. 0-9998). This means that not all registers that are possible (0-65535) can be used.
@@ -33,11 +33,11 @@ NOTE: Depending on the vendor wither the 'old style' notation is used (where all
 
 This specification allows for the following notations for a single register (All these examples show the same address):
 
-- **Modbus notation (5 digits).**
+- **Modicon notation (5 digits).**
   - Is 1 more than the actual wire address
   - Only allows for a small subset of the possible registers: 1-9999
   - Example: **14322**
-- **Modbus notation (6 digits).**
+- **Modicon notation (6 digits).**
   - Is 1 more than the actual wire address.
   - Allows for all registers to be used (1-65536)
   - Example: **104322**
@@ -144,7 +144,7 @@ All numbers can be combined into calculations that follow PEMDAS to determine th
 - `ipv4addr(<registers>)` --> String
   - Interpret the provided 4 registers as a binary IPv4 network address and convert is into a '.' string
   - `0102 0304` --> `1.2.3.4`
-- `ipv6addr(<registers>)`
+- `ipv6addr(<registers>)` --> String
   - Interpret the provided 4 registers as a binary IPv4 network address and convert is into a '.' string
   - `0001 0203 0405 0607 0809 0A0B 0C0D 0E0F` --> `0001:0203:0405:0607:0809:0A0B:0C0D:0E0F`
 
