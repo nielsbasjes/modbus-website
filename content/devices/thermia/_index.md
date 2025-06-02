@@ -31,7 +31,8 @@ Official Modbus mappings:
 > The Coils and Discrete Inputs (i.e. binary values) are not yet available because I have not yet implemented these at all in this Toolkit
 
 The schema is also available as pre generated Kotlin code.
-
+{{< tabs >}}
+{{% tab title="Maven" %}}
 ```xml
 <dependency>
   <groupId>nl.basjes.modbus.devices</groupId>
@@ -39,6 +40,8 @@ The schema is also available as pre generated Kotlin code.
   <version>{{%modbus-device-thermia-genesis-version%}}</version>
 </dependency>
 ```
+{{% /tab %}}
+{{< /tabs >}}
 
 With that the code to use the values can be as simple as this Kotlin Script:
 {{< notice style="green" icon="screwdriver-wrench" title="GetThermia.main.kts" expanded="true" >}}

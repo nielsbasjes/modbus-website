@@ -64,8 +64,10 @@ And then as often as you like (and your hardware supports!):
 - For each field you can now get the actual value
 
 
-## Add the main library to you project
+## Add the main library to your project
 
+{{< tabs >}}
+{{% tab title="Maven" %}}
 You can either do the direct 
 ```xml
 <dependency>
@@ -99,6 +101,9 @@ and then later do the simpler
   <artifactId>modbus-schema-device</artifactId>
 </dependency>
 ```
+{{% /tab %}}
+{{< /tabs >}}
+
 
 ## Creating a SchemaDevice
 
@@ -391,6 +396,8 @@ Note that these will return a null in all of these cases:
 - You are accessing the wrong value property for this Field (i.e. use `.longValue` for a Field that returns a `String` )
 
 In one of my projects I used a library which had a separate function for each of those types and the code to use it became this. This looks like it can be combined but because of the differences in the underlying types it could not.
+{{< tabs >}}
+{{% tab title="Kotlin" %}}
 ```kotlin
 when(it.returnType) {
     DOUBLE ->        it.doubleValue                ?.let { value -> point.addField(label, value) }
@@ -401,6 +408,8 @@ when(it.returnType) {
     BOOLEAN -> TODO()
 }
 ```
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Rinse and repeat
 
