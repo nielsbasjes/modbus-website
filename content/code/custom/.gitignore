@@ -1,0 +1,4 @@
+/target/generated-sources/annotations
+/target/maven-status
+/target/classes
+/target/kaptStubs
