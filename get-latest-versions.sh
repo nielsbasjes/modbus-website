@@ -23,3 +23,5 @@ find content -type f -name '*.main.kts' -print0 | xargs -0 -n1 sed -i "s@:Depend
 find content -type f -name '*.main.kts' -print0 | xargs -0 -n1 sed -i "s@:DependsOn.\"nl.basjes.modbus.devices:modbus-device-sdm630:[^\"]\+\")@:DependsOn(\"nl.basjes.modbus.devices:modbus-device-sdm630:${MODBUS_DEVICE_SDM630_VERSION}\")@g"
 find content -type f -name '*.main.kts' -print0 | xargs -0 -n1 sed -i "s@:DependsOn.\"nl.basjes.modbus.devices:modbus-device-thermia-genesis:[^\"]\+\")@:DependsOn(\"nl.basjes.modbus.devices:modbus-device-thermia-genesis:${MODBUS_DEVICE_THERMIA_GENESIS_VERSION}\")@g"
 find content -type f -name '*.main.kts' -print0 | xargs -0 -n1 sed -i "s@:DependsOn.\"nl.basjes.sunspec:sunspec-device:[^\"]\+\")@:DependsOn(\"nl.basjes.sunspec:sunspec-device:${SUNSPEC_DEVICE_VERSION}\")@g"
+
+git status
