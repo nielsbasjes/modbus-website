@@ -2,7 +2,7 @@
 
 @file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.7.0")
 @file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.7.0")
-@file:DependsOn("nl.basjes.modbus.devices:modbus-device-thermia-genesis:0.3.0")
+@file:DependsOn("nl.basjes.modbus.devices:modbus-device-thermia-genesis:0.3.1")
 
 import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT
 import nl.basjes.modbus.device.plc4j.ModbusDevicePlc4j
