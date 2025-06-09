@@ -52,8 +52,8 @@ This script produced this output:
 
     Outdoor Temperature            : 22.83 °C
     Room Temperature               : 22.5 °C
-    Tap Water Weighted Temperature : 53.2 °C
     Comfort Wheel Setting          : 20.5 °C
+    Tap Water Weighted Temperature : 53.2 °C
 
 
 Repo location of this Schema: https://github.com/nielsbasjes/modbus-devices/tree/main/modbus-device-thermia-genesis
