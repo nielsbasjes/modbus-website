@@ -1,0 +1,23 @@
+//
+// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.6.0
+// Using the CUSTOM template to generate Custom code.
+// https://modbus.basjes.nl
+//
+
+// ===========================================================
+//               !!! THIS IS GENERATED CODE !!!
+// -----------------------------------------------------------
+//       EVERY TIME THE SOFTWARE IS BUILD THIS FILE IS
+//        REGENERATED AND ALL MANUAL CHANGES ARE LOST
+// ===========================================================
+PACKAGE: nl.example;
+CLASS: Minimal
+
+// ==========================================
+BLOCK: Block1 -> id = "Block 1" ; description = "The first block"
+// FIELDS
+    // ==========================================
+    FIELD: Name ; id = "Name"; description = "The name Field"; unit = ""; immutable = false; system = false; fetchGroup = "<<Block 1 | Name>>"
+           GETTER     = field.getStringValue();
+           EXPRESSION = utf8(hr:00000 # 12)
+           REWRITE    = UTF8String( GetModbus( 4x00001, 4x00002, 4x00003, 4x00004, 4x00005, 4x00006, 4x00007, 4x00008, 4x00009, 4x00010, 4x00011, 4x00012 ) )

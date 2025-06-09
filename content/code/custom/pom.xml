@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>nl.example</groupId>
+    <artifactId>modbus-consumer</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+
+        <java.version>11</java.version>
+        <kotlin.version>2.1.21</kotlin.version>
+
+        <modbus-schema.version>0.7.0</modbus-schema.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>nl.basjes.modbus</groupId>
+                <artifactId>modbus-schema-bom</artifactId>
+                <version>${modbus-schema.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test-junit5</artifactId>
+            <version>${kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>nl.basjes.modbus</groupId>
+            <artifactId>modbus-api-plc4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>nl.basjes.modbus</groupId>
+            <artifactId>modbus-schema-device</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <extensions>true</extensions>
+            </plugin>
+
+            <plugin>
+                <groupId>nl.basjes.modbus</groupId>
+                <artifactId>modbus-schema-maven-plugin</artifactId>
+                <version>${modbus-schema.version}</version>
+
+                <configuration>
+                    <modbusSchemaFile>minimal.yaml</modbusSchemaFile>
+                    <packageName>nl.example</packageName>
+                    <className>Minimal</className>
+                    <templateDirectory>${project.basedir}/template</templateDirectory>
+                    <outputDirectory>${project.build.directory}/generated-sources/flubber</outputDirectory>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>Generate Main Class</id>
+                        <goals>
+                            <goal>generate-main</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>Generate Test Class</id>
+                        <goals>
+                            <goal>generate-test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+        </plugins>
+
+    </build>
+</project>
