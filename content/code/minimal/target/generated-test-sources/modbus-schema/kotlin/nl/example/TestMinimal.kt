@@ -1,5 +1,5 @@
 //
-// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.6.0
+// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.7.0
 // Using the builtin template to generate Kotlin TEST code.
 // https://modbus.basjes.nl
 //
