@@ -1,0 +1,29 @@
+# ----------------------------------------------------------------------------------------
+# HomeAssistant definitions for all requested fields
+mqtt:
+  sensor:
+
+    - name: "Common - Manufacturer"
+      unique_id: "SunSpec-SMA-3005067415-Model_1_Mn"
+      state_topic: "energy/solar"
+      value_template: "{{ value_json.Model_1_Mn }}"
+      icon: mdi:solar-panel
+      device:
+        name: "SMA SB3.6-1AV-41"
+        manufacturer: "SMA"
+        model: "SB3.6-1AV-41"
+        identifiers: "3005067415"
+        sw_version: "4.01.15.R"
+
+    - name: "Inverter (Single Phase) - Amps"
+      unique_id: "SunSpec-SMA-3005067415-Model_101_A"
+      state_topic: "energy/solar"
+      value_template: "{{ value_json.Model_101_A | round(4, default=0)}}"
+      unit_of_measurement: "A"
+      icon: mdi:solar-panel
+      device:
+        name: "SMA SB3.6-1AV-41"
+        manufacturer: "SMA"
+        model: "SB3.6-1AV-41"
+        identifiers: "3005067415"
+        sw_version: "4.01.15.R"

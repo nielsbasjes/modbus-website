@@ -9,6 +9,6 @@ Page is not yet finished. Is incomplete and will contain inaccuracies.
 
 You can create the schema for your device!
 
-{{< code language="yaml" source="code/minimal/minimal.yaml" >}}
+{{< code language="yaml" source="/code/minimal/minimal.yaml" >}}
 
 

@@ -1,6 +1,6 @@
 +++
 title = 'Sunspec'
-weight = 10
+weight = 49
 +++
 
 ## What is SunSpec?
@@ -163,12 +163,12 @@ Two examples on how this can be used in a Kotlin Script
 
 A basic example to simply dump everything to the console
 {{< notice style="blue" icon="screwdriver-wrench" title="GetSunSpecFullDump.main.kts" expanded="true" >}}
-{{< code language="kotlin" source="code/GetSunSpecFullDump.main.kts" >}}
+{{< code language="kotlin" source="/code/sunspec/GetSunSpecFullDump.main.kts" >}}
 {{< /notice >}}
 
 A basic example to get specific values
 {{< notice style="green" icon="screwdriver-wrench" title="GetSunSpec.main.kts" expanded="true" >}}
-{{< code language="kotlin" source="code/GetSunSpec.main.kts" >}}
+{{< code language="kotlin" source="/code/sunspec/GetSunSpec.main.kts" >}}
 {{< /notice >}}
 
 To get a sense of what this results in: One of the tables printed in the loop of this code looked like this (my solar panels were making only 190 Watt at that moment):

@@ -45,7 +45,7 @@ The schema is also available as pre generated Kotlin code.
 
 With that the code to use the values can be as simple as this Kotlin Script:
 {{< notice style="green" icon="screwdriver-wrench" title="GetThermia.main.kts" expanded="true" >}}
-{{< code language="kotlin" source="/code/GetThermia.main.kts" >}}
+{{< code language="kotlin" source="/code/thermia/GetThermia.main.kts" >}}
 {{< /notice >}}
 
 This script produced this output:
