@@ -18,6 +18,7 @@
  *
  */
 
+@file:DependsOn("org.jetbrains.kotlin:kotlin-stdlib:2.1.21")
 @file:DependsOn("nl.basjes.sunspec:sunspec-device:0.5.0")
 @file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.7.0")
 @file:DependsOn("org.json:json:20250517")
@@ -227,9 +228,11 @@ fun runLoop(device: SchemaDevice, mqttClient: MqttClient?, mqttTopic: String) {
                     }
 
                 } catch (e: TimeoutException) {
-                    System.err.println("Got a TimeoutException from MQTT (ignoring): ${e.message}")
+                    System.err.println("Got a TimeoutException from MQTT (ignoring 1): $e --> ${e.message} ==> ${e.printStackTrace()}")
+                } catch (e: java.util.concurrent.TimeoutException) {
+                    System.err.println("Got a java.util.concurrent.TimeoutException (ignoring 2): $e --> ${e.message} ==> ${e.printStackTrace()}")
                 } catch (e: Exception) {
-                    System.err.println("Stopping because of exception: ${e.message}")
+                    System.err.println("Got an exception: $e --> ${e.message} ==> ${e.printStackTrace()}")
                     cancel()
                 }
             }
