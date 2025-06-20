@@ -1,43 +1,28 @@
 #!/usr/bin/env kotlin
-/*
- *
- * Modbus Schema Toolkit
- * Copyright (C) 2019-2025 Niels Basjes
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- */
 
 @file:DependsOn("org.jetbrains.kotlin:kotlin-stdlib:2.1.21")
 @file:DependsOn("nl.basjes.sunspec:sunspec-device:0.5.0")
-@file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.7.0")
+@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.7.0")
 @file:DependsOn("org.json:json:20250517")
 @file:DependsOn("de.kempmobil.ktor.mqtt:mqtt-core-jvm:0.6.1")
 @file:DependsOn("de.kempmobil.ktor.mqtt:mqtt-client-jvm:0.6.1")
 @file:DependsOn("org.apache.logging.log4j:log4j-to-slf4j:2.24.3")
 @file:DependsOn("org.slf4j:slf4j-simple:2.0.17")
 
+import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster
+import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT
 import de.kempmobil.ktor.mqtt.MqttClient
 import de.kempmobil.ktor.mqtt.PublishRequest
 import de.kempmobil.ktor.mqtt.QoS
 import de.kempmobil.ktor.mqtt.TimeoutException
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.io.IOException
 import nl.basjes.modbus.device.exception.ModbusException
-import nl.basjes.modbus.device.plc4j.ModbusDevicePlc4j
+import nl.basjes.modbus.device.j2mod.ModbusDeviceJ2Mod
 import nl.basjes.modbus.schema.Field
 import nl.basjes.modbus.schema.ReturnType.BOOLEAN
 import nl.basjes.modbus.schema.ReturnType.DOUBLE
@@ -52,12 +37,10 @@ import nl.basjes.modbus.schema.toTable
 import nl.basjes.sunspec.device.SunspecDevice
 import org.json.JSONObject
 import java.time.Instant
-import java.util.Timer
-import java.util.TimerTask
 import kotlin.system.exitProcess
 import kotlin.time.Duration.Companion.hours
 
-val modbusIp             :String = "sunspec.iot.basjes.nl"
+val modbusHost             :String = "sunspec.iot.basjes.nl"
 val modbusPort           :Int    = 502 // The default MODBUS TCP port
 val modbusUnit           :Int    = 126 // SMA uses 126, other vendors can differ
 
@@ -126,10 +109,10 @@ fun allTheFieldsIWant(device: SchemaDevice): List<Field> {
 // ===================================================================================================
 
 
-val connectionString = "modbus-tcp:tcp://$modbusIp:$modbusPort?unit-identifier=$modbusUnit"
-
 print("Modbus: Connecting...")
-ModbusDevicePlc4j(connectionString).use { modbusDevice ->
+val modbusMaster = ModbusTCPMaster(modbusHost, modbusPort)
+modbusMaster.connect()
+ModbusDeviceJ2Mod(modbusMaster, modbusUnit). use { modbusDevice ->
     println(" done")
 
     // Connect to the SunSpec device and generate a SchemaDevice with all supported SunSpec Models and Fields.
@@ -183,78 +166,72 @@ fun runLoop(device: SchemaDevice, mqttClient: MqttClient?, mqttTopic: String) {
 
     // ----------------------------------------------------------------------------------------
 
+    val interval = 1000L
+
     println("Starting read loop")
 
-    val timer = Timer("Fetcher")
-    val timerTask: AliveTimerTask =
-        object : AliveTimerTask() {
-            override fun run() {
-                try {
-                    // Update all fields
-                    device.update()
+    while (true) {
+        try {
+            runBlocking {
+                // Wait until the current time is a multiple of the configured interval
+                val now = Instant.now().toEpochMilli()
+                val sleepTime = (((now / interval) + 1) * interval) - now
+                if (sleepTime > 0) delay(sleepTime)
+            }
+            // Update all fields
+            val startUpdate = Instant.now()
+            print("Doing update at: $startUpdate .. ")
+            device.update()
+            val finishUpdate = Instant.now()
+            println("done in ${finishUpdate.toEpochMilli() -  startUpdate.toEpochMilli()} milliseconds.")
 
-                    val result = JSONObject()
+            val result = JSONObject()
 
-                    // We are rounding the timestamp to seconds to make the graphs in influxdb work a bit better
-                    val now = Instant.now()
-                    result.put("timestamp", now.toEpochMilli())
+            // We are rounding the timestamp to seconds to make the graphs in influxdb work a bit better
+            val now = Instant.now()
+            result.put("timestamp", now.toEpochMilli())
+            result.put("timestampString", now)
 
-                    allFields.forEach {
-                        val jsonFieldName = it.jsonFieldName()
-                        when(it.returnType) {
-                            DOUBLE     -> result.put(jsonFieldName, it.doubleValue     )
-                            LONG       -> result.put(jsonFieldName, it.longValue       )
-                            STRING     -> result.put(jsonFieldName, it.stringValue     )
-                            STRINGLIST -> result.put(jsonFieldName, it.stringListValue )
-                            UNKNOWN    -> TODO()
-                            BOOLEAN    -> TODO()
-                        }
-                    }
-
-                    if (mqttClient == null) {
-                        println(result)
-                    } else {
-                        GlobalScope.launch {
-                            print("Writing to MQTT: $now .. ")
-                            mqttClient
-                                .publish(PublishRequest(mqttTopic) {
-                                    desiredQoS = QoS.AT_LEAST_ONCE
-                                    messageExpiryInterval = 12.hours
-                                    payload(result.toString())
-                                })
-                                .onSuccess { println("COMPLETED") }
-                                .onFailure { println("FAILED with $it") }
-                        }
-                    }
-
-                } catch (e: TimeoutException) {
-                    System.err.println("Got a TimeoutException from MQTT (ignoring 1): $e --> ${e.message} ==> ${e.printStackTrace()}")
-                } catch (e: java.util.concurrent.TimeoutException) {
-                    System.err.println("Got a java.util.concurrent.TimeoutException (ignoring 2): $e --> ${e.message} ==> ${e.printStackTrace()}")
-                } catch (e: Exception) {
-                    System.err.println("Got an exception: $e --> ${e.message} ==> ${e.printStackTrace()}")
-                    cancel()
+            allFields.forEach {
+                val jsonFieldName = it.jsonFieldName()
+                when(it.returnType) {
+                    DOUBLE     -> result.put(jsonFieldName, it.doubleValue     ?: 0.0)
+                    LONG       -> result.put(jsonFieldName, it.longValue       ?: 0)
+                    STRING     -> result.put(jsonFieldName, it.stringValue     ?: "")
+                    STRINGLIST -> result.put(jsonFieldName, it.stringListValue ?: listOf<String>())
+                    UNKNOWN    -> TODO()
+                    BOOLEAN    -> TODO()
                 }
             }
+
+            if (mqttClient == null) {
+                println(result)
+            } else {
+                GlobalScope.launch {
+                    print("Writing to MQTT: $now .. ")
+                    mqttClient
+                        .publish(PublishRequest(mqttTopic) {
+                            desiredQoS = QoS.AT_LEAST_ONCE
+                            messageExpiryInterval = 12.hours
+                            payload(result.toString())
+                        })
+                        .onSuccess { println("COMPLETED") }
+                        .onFailure { println("FAILED with $it") }
+                }
+            }
+
+        } catch (e: TimeoutException) {
+            System.err.println("Got a TimeoutException from MQTT (ignoring 1): $e --> ${e.message} ==> ${e.printStackTrace()}")
+        } catch (e: java.util.concurrent.TimeoutException) {
+            System.err.println("Got a java.util.concurrent.TimeoutException (ignoring 2): $e --> ${e.message} ==> ${e.printStackTrace()}")
+        } catch (e: Exception) {
+            System.err.println("Got an exception: $e --> ${e.message} ==> ${e.printStackTrace()}")
+            println("Stopping")
+            return
         }
-
-    // Fetch the data every 1000 ms
-    timer.scheduleAtFixedRate(timerTask, 0L, 1000L)
-
-    while (timerTask.isAlive) {
-        Thread.sleep(1000) // Check every second if it is still alive
     }
-    println("Stopping")
-    timer.cancel()
-}
 
-abstract class AliveTimerTask : TimerTask() {
-    var isAlive: Boolean = true
-
-    override fun cancel(): Boolean {
-        this.isAlive = false
-        return super.cancel()
-    }
+    println("Stopping.")
 }
 
 fun Field.jsonFieldName() = "${this.block.id} ${this.id}".replace(Regex("[^a-zA-Z0-9_]"), "_")
