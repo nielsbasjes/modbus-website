@@ -18,7 +18,7 @@ val modbusIp          = "sunspec.iot.basjes.nl"
 
 // Use the standards for SunSpec to connect to the device
 val modbusPort        = MODBUS_STANDARD_TCP_PORT
-val modbusUnit        = 126  // This is the SunSpec specific Modbus Unit ID
+val modbusUnit        = 126  // This is the SunSpec specific Modbus Unit ID for SMA devices
 
 print("Modbus: Connecting...")
 // Connect to the real Modbus device over TCP using the Apache PLC4J library
