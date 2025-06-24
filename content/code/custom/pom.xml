@@ -12,7 +12,7 @@
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 
         <java.version>11</java.version>
-        <kotlin.version>2.1.21</kotlin.version>
+        <kotlin.version>2.2.0</kotlin.version>
 
         <modbus-schema.version>0.7.0</modbus-schema.version>
     </properties>
