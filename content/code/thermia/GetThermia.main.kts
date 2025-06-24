@@ -1,6 +1,6 @@
 #!/usr/bin/env kotlin
 
-@file:DependsOn("org.jetbrains.kotlin:kotlin-stdlib:2.1.21")
+@file:DependsOn("org.jetbrains.kotlin:kotlin-stdlib:2.2.0")
 @file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.7.0")
 @file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.7.0")
 @file:DependsOn("nl.basjes.modbus.devices:modbus-device-thermia-genesis:0.3.2-SNAPSHOT")
