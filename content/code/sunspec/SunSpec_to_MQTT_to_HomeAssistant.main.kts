@@ -65,43 +65,45 @@ fun allTheFieldsIWant(device: SchemaDevice): List<Field> {
 
 
     // Or a smarter more efficient selection
+
+    // These are always needed
     allFields.add(device.wantField("Model 1", "Manufacturer"    ))
     allFields.add(device.wantField("Model 1", "Model"           ))
     allFields.add(device.wantField("Model 1", "Version"         ))
     allFields.add(device.wantField("Model 1", "Serial Number"   ))
 
-    allFields.add(device.wantField("Model 101", "A"             ))
-    allFields.add(device.wantField("Model 101", "AphA"          ))
-    allFields.add(device.wantField("Model 101", "AphB"          ))
-    allFields.add(device.wantField("Model 101", "AphC"          ))
-    allFields.add(device.wantField("Model 101", "PPVphAB"       ))
-    allFields.add(device.wantField("Model 101", "PPVphBC"       ))
-    allFields.add(device.wantField("Model 101", "PPVphCA"       ))
-    allFields.add(device.wantField("Model 101", "PhVphA"        ))
-    allFields.add(device.wantField("Model 101", "PhVphB"        ))
-    allFields.add(device.wantField("Model 101", "PhVphC"        ))
-    allFields.add(device.wantField("Model 101", "W"             ))
-    allFields.add(device.wantField("Model 101", "Hz"            ))
-    allFields.add(device.wantField("Model 101", "VA"            ))
-    allFields.add(device.wantField("Model 101", "VAr"           ))
-    allFields.add(device.wantField("Model 101", "PF"            ))
-    allFields.add(device.wantField("Model 101", "WH"            ))
-    allFields.add(device.wantField("Model 101", "DCA"           ))
-    allFields.add(device.wantField("Model 101", "DCV"           ))
-    allFields.add(device.wantField("Model 101", "DCW"           ))
-    allFields.add(device.wantField("Model 101", "TmpCab"        ))
-    allFields.add(device.wantField("Model 101", "TmpSnk"        ))
-    allFields.add(device.wantField("Model 101", "TmpTrns"       ))
-    allFields.add(device.wantField("Model 101", "TmpOt"         ))
+    allFields.add(device.wantField("Model 101", "AC Current"                ))
+    allFields.add(device.wantField("Model 101", "AC Current Phase A"        ))
+    allFields.add(device.wantField("Model 101", "AC Current Phase B"        ))
+    allFields.add(device.wantField("Model 101", "AC Current Phase C"        ))
+    allFields.add(device.wantField("Model 101", "AC Voltage Phase AB"       ))
+    allFields.add(device.wantField("Model 101", "AC Voltage Phase BC"       ))
+    allFields.add(device.wantField("Model 101", "AC Voltage Phase CA"       ))
+    allFields.add(device.wantField("Model 101", "AC Voltage Phase AN"       ))
+    allFields.add(device.wantField("Model 101", "AC Voltage Phase BN"       ))
+    allFields.add(device.wantField("Model 101", "AC Voltage Phase CN"       ))
+    allFields.add(device.wantField("Model 101", "AC Power"                  ))
+    allFields.add(device.wantField("Model 101", "AC Line Frequency"         ))
+    allFields.add(device.wantField("Model 101", "AC Apparent Power"         ))
+    allFields.add(device.wantField("Model 101", "AC Reactive Power"         ))
+    allFields.add(device.wantField("Model 101", "AC Power Factor"           ))
+    allFields.add(device.wantField("Model 101", "AC Energy"                 ))
+    allFields.add(device.wantField("Model 101", "DC Current"                ))
+    allFields.add(device.wantField("Model 101", "DC Voltage"                ))
+    allFields.add(device.wantField("Model 101", "DC Power"                  ))
+    allFields.add(device.wantField("Model 101", "Cabinet Temperature"       ))
+    allFields.add(device.wantField("Model 101", "Heat Sink Temperature"     ))
+    allFields.add(device.wantField("Model 101", "Transformer Temperature"   ))
+    allFields.add(device.wantField("Model 101", "Other Temperature"         ))
 
-    allFields.add(device.wantField("Model 160", "Module_0_ID"   ))
-    allFields.add(device.wantField("Model 160", "Module_0_DCA"  ))
-    allFields.add(device.wantField("Model 160", "Module_0_DCV"  ))
-    allFields.add(device.wantField("Model 160", "Module_0_DCW"  ))
-    allFields.add(device.wantField("Model 160", "Module_1_ID"   ))
-    allFields.add(device.wantField("Model 160", "Module_1_DCA"  ))
-    allFields.add(device.wantField("Model 160", "Module_1_DCV"  ))
-    allFields.add(device.wantField("Model 160", "Module_1_DCW"  ))
+    allFields.add(device.wantField("Model 160", "Module_0_Input ID"         ))
+    allFields.add(device.wantField("Model 160", "Module_0_DC Current"       ))
+    allFields.add(device.wantField("Model 160", "Module_0_DC Voltage"       ))
+    allFields.add(device.wantField("Model 160", "Module_0_DC Power"         ))
+    allFields.add(device.wantField("Model 160", "Module_1_Input ID"         ))
+    allFields.add(device.wantField("Model 160", "Module_1_DC Current"       ))
+    allFields.add(device.wantField("Model 160", "Module_1_DC Voltage"       ))
+    allFields.add(device.wantField("Model 160", "Module_1_DC Power"         ))
     return allFields
 }
 
@@ -154,6 +156,7 @@ fun runLoop(device: SchemaDevice, mqttClient: MqttClient?, mqttTopic: String) {
     allFields.forEach { it.need() }
 
     println("Trying to get ${allFields.size} fields.")
+    allFields.forEach { println(it) }
     device.update()
     println("Found ${allFields.filter{ it.value != null }.size} fields to have a value.")
     println(device.toTable(onlyUseFullFields = true))
@@ -237,7 +240,7 @@ fun Field.jsonFieldName() = "${this.block.id} ${this.id}".replace(Regex("[^a-zA-
 
 fun showAllFieldsWithUsableValues(schemaDevice: SchemaDevice) {
     schemaDevice.updateAll()
-    println("All possible fields that provide a useful value:\n${schemaDevice.toTable(true)}")
+    println("All possible fields that provide a useful value:\n${schemaDevice.toTable(false)}")
     exitProcess(0)
 }
 
