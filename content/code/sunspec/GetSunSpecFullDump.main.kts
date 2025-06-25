@@ -1,27 +1,28 @@
 #!/usr/bin/env kotlin
 
 // Include the needed libraries
-@file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.7.0")
-@file:DependsOn("nl.basjes.sunspec:sunspec-device:0.5.0")
+@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.10.0")
+@file:DependsOn("nl.basjes.sunspec:sunspec-device:0.6.0")
 
 // Regular Kotlin import statements
+import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster
 import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT
 import nl.basjes.modbus.device.exception.ModbusException
-import nl.basjes.modbus.device.plc4j.ModbusDevicePlc4j
+import nl.basjes.modbus.device.j2mod.ModbusDeviceJ2Mod
 import nl.basjes.modbus.schema.toTable
 import nl.basjes.sunspec.device.SunspecDevice
 
 // The hostname to connect to
-val modbusIp          = "sunspec.iot.basjes.nl"
+val modbusHost        = "sunspec.iot.basjes.nl"
 
 // Use the standards for SunSpec to connect to the device
 val modbusPort        = MODBUS_STANDARD_TCP_PORT
 val modbusUnit        = 126 // SMA uses 126, other vendors can differ
 
 print("Modbus: Connecting...")
-// Connect to the real Modbus device over TCP using the Apache PLC4J library
-ModbusDevicePlc4j("modbus-tcp:tcp://${modbusIp}:${modbusPort}?unit-identifier=${modbusUnit}")
-    .use { modbusDevice ->
+val modbusMaster = ModbusTCPMaster(modbusHost, modbusPort)
+modbusMaster.connect()
+ModbusDeviceJ2Mod(modbusMaster, modbusUnit). use { modbusDevice ->
     println(" done")
 
     // Read the schema by interrogating the device (so no Yaml file).

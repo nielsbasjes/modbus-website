@@ -1,16 +1,15 @@
 #!/usr/bin/env kotlin
 
 @file:DependsOn("org.jetbrains.kotlin:kotlin-stdlib:2.2.0")
-@file:DependsOn("nl.basjes.sunspec:sunspec-device:0.5.0")
-@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.7.0")
+@file:DependsOn("nl.basjes.sunspec:sunspec-device:0.6.0")
+@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.10.0")
 @file:DependsOn("org.json:json:20250517")
 @file:DependsOn("de.kempmobil.ktor.mqtt:mqtt-core-jvm:0.6.1")
 @file:DependsOn("de.kempmobil.ktor.mqtt:mqtt-client-jvm:0.6.1")
-@file:DependsOn("org.apache.logging.log4j:log4j-to-slf4j:2.24.3")
+@file:DependsOn("org.apache.logging.log4j:log4j-to-slf4j:2.25.0")
 @file:DependsOn("org.slf4j:slf4j-simple:2.0.17")
 
 import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster
-import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT
 import de.kempmobil.ktor.mqtt.MqttClient
 import de.kempmobil.ktor.mqtt.PublishRequest
 import de.kempmobil.ktor.mqtt.QoS
@@ -40,11 +39,11 @@ import java.time.Instant
 import kotlin.system.exitProcess
 import kotlin.time.Duration.Companion.hours
 
-val modbusHost             :String = "sunspec.iot.basjes.nl"
+val modbusHost           :String = "sunspec.iot.basjes.nl"
 val modbusPort           :Int    = 502 // The default MODBUS TCP port
 val modbusUnit           :Int    = 126 // SMA uses 126, other vendors can differ
 
-val mqttBrokerHost       :String? = "localhost"
+val mqttBrokerHost       :String? = null//"localhost"
 val mqttBrokerPort       :Int     = 1883
 val mqttTopic            :String? = "energy/solar"
 
@@ -66,10 +65,10 @@ fun allTheFieldsIWant(device: SchemaDevice): List<Field> {
 
 
     // Or a smarter more efficient selection
-    allFields.add(device.wantField("Model 1", "Mn"              ))
-    allFields.add(device.wantField("Model 1", "Md"              ))
-    allFields.add(device.wantField("Model 1", "Vr"              ))
-    allFields.add(device.wantField("Model 1", "SN"              ))
+    allFields.add(device.wantField("Model 1", "Manufacturer"    ))
+    allFields.add(device.wantField("Model 1", "Model"           ))
+    allFields.add(device.wantField("Model 1", "Version"         ))
+    allFields.add(device.wantField("Model 1", "Serial Number"   ))
 
     allFields.add(device.wantField("Model 101", "A"             ))
     allFields.add(device.wantField("Model 101", "AphA"          ))
@@ -252,10 +251,10 @@ fun generateHomeAssistantConfig(
     // a config for Home Assistant is generated (must be copied to the Home Assistant setup manually)
 
     // These are always needed
-    val manufacturer = device.wantField("Model 1", "Mn")
-    val model        = device.wantField("Model 1", "Md")
-    val version      = device.wantField("Model 1", "Vr")
-    val serialNumber = device.wantField("Model 1", "SN")
+    val manufacturer = device.wantField("Model 1", "Manufacturer")
+    val model        = device.wantField("Model 1", "Model")
+    val version      = device.wantField("Model 1", "Version")
+    val serialNumber = device.wantField("Model 1", "Serial Number")
 
     val configFields = mutableListOf<Field>()
     configFields.add(manufacturer)

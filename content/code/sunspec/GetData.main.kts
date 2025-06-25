@@ -1,8 +1,8 @@
 #!/usr/bin/env kotlin
 
 // Include the needed libraries
-@file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.7.0")
-@file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.7.0")
+@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.10.0")
+@file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.10.0")
 
 // Regular Kotlin import statements
 import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT
@@ -21,9 +21,9 @@ val modbusPort        = MODBUS_STANDARD_TCP_PORT
 val modbusUnit        = 126  // This is the SunSpec specific Modbus Unit ID for SMA devices
 
 print("Modbus: Connecting...")
-// Connect to the real Modbus device over TCP using the Apache PLC4J library
-ModbusDevicePlc4j("modbus-tcp:tcp://${modbusIp}:${modbusPort}?unit-identifier=${modbusUnit}")
-    .use { modbusDevice ->
+val modbusMaster = ModbusTCPMaster(modbusHost, modbusPort)
+modbusMaster.connect()
+ModbusDeviceJ2Mod(modbusMaster, modbusUnit). use { modbusDevice ->
     println(" done")
 
     // Read the schema from a file
@@ -36,10 +36,10 @@ ModbusDevicePlc4j("modbus-tcp:tcp://${modbusIp}:${modbusPort}?unit-identifier=${
     device.connect(modbusDevice)
 
     // Get a reference to some of the available fields
-    val manufacturer = device["Model 1"]["Mn"] ?: throw IllegalArgumentException("Unable to get the \"Model 1\" -> \"Mn\" Field")
-    val model        = device["Model 1"]["Md"] ?: throw IllegalArgumentException("Unable to get the \"Model 1\" -> \"Md\" Field")
-    val version      = device["Model 1"]["Vr"] ?: throw IllegalArgumentException("Unable to get the \"Model 1\" -> \"Vr\" Field")
-    val serialNumber = device["Model 1"]["SN"] ?: throw IllegalArgumentException("Unable to get the \"Model 1\" -> \"SN\" Field")
+    val manufacturer = device["Model 1"]["Manufacturer"]  ?: throw IllegalArgumentException("Unable to get the \"Model 1\" -> \"Manufacturer\" Field")
+    val model        = device["Model 1"]["Model"]         ?: throw IllegalArgumentException("Unable to get the \"Model 1\" -> \"Model\" Field")
+    val version      = device["Model 1"]["Version"]       ?: throw IllegalArgumentException("Unable to get the \"Model 1\" -> \"Version\" Field")
+    val serialNumber = device["Model 1"]["Serial Number"] ?: throw IllegalArgumentException("Unable to get the \"Model 1\" -> \"Serial Number\" Field")
 
     // Real Modbus devices are so very slow that we need to indicate which need to be kept up to date
     manufacturer .need()

@@ -4,9 +4,9 @@ mqtt:
   sensor:
 
     - name: "Common - Manufacturer"
-      unique_id: "SunSpec-SMA-3005067415-Model_1_Mn"
+      unique_id: "SunSpec-SMA-3005067415-Model_1_Manufacturer"
       state_topic: "energy/solar"
-      value_template: "{{ value_json.Model_1_Mn }}"
+      value_template: "{{ value_json.Model_1_Manufacturer }}"
       icon: mdi:solar-panel
       device:
         name: "SMA SB3.6-1AV-41"
@@ -15,10 +15,10 @@ mqtt:
         identifiers: "3005067415"
         sw_version: "4.01.15.R"
 
-    - name: "Inverter (Single Phase) - Amps"
-      unique_id: "SunSpec-SMA-3005067415-Model_101_A"
+    - name: "Inverter (Single Phase) - AC Current"
+      unique_id: "SunSpec-SMA-3005067415-Model_101_AC_Current"
       state_topic: "energy/solar"
-      value_template: "{{ value_json.Model_101_A | round(4, default=0)}}"
+      value_template: "{{ value_json.Model_101_AC_Current | round(4, default=0)}}"
       unit_of_measurement: "A"
       icon: mdi:solar-panel
       device:
