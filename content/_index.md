@@ -4,7 +4,8 @@ type = "home"
 +++
 
 ## Summary
-This set of Kotlin/Java libraries and tools to read data from Modbus devices like Electricity Meters, Solar Inverters and Heat pumps. 
+This is a Kotlin/Java toolkit that combines the ability to make a generic modbus mapping with an advanced modbus query optimizer.
+The goal of this set of libraries and tools to make getting meaningful data from Modbus devices like Electricity Meters, Solar Inverters and Heat pumps very easy and very efficient.
 
 This toolkit mainly consist of the following components:
 - A generic definition language for creating a modbus mapping (a Modbus Schema).
