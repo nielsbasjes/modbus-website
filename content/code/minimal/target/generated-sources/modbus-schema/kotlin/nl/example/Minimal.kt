@@ -1,5 +1,5 @@
 //
-// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.7.0
+// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.10.0
 // Using the builtin template to generate Kotlin MAIN code.
 // https://modbus.basjes.nl
 //
@@ -42,6 +42,7 @@ open class Minimal {
     /**
      * Update all registers related to the needed fields to be updated with a maximum age of the provided milliseconds
      * @param maxAge maximum age of the fields in milliseconds
+     * @return A list of all modbus queries that have been done (with duration and status)
      */
     @JvmOverloads
     fun update(maxAge: Long = 0) = schemaDevice.update(maxAge)
@@ -49,11 +50,13 @@ open class Minimal {
     /**
      * Update all registers related to the specified field
      * @param field the Field that must be updated
+     * @return A list of all modbus queries that have been done (with duration and status)
      */
     fun update(field: Field) = schemaDevice.update(field)
 
     /**
      * Make sure all registers mentioned in all known fields are retrieved.
+     * @return A (possibly empty) list of all modbus queries that have been done (with duration and status)
      */
     @JvmOverloads
     fun updateAll(maxAge: Long = 0) = schemaDevice.updateAll(maxAge)
@@ -92,6 +95,11 @@ open class Minimal {
          */
         fun unNeed() = field.unNeed()
         /**
+         * Directly update this field
+         * @return A list of all modbus queries that have been done (with duration and status)
+         */
+        fun update() = field.update();
+        /**
          * The unit of the returns value
          */
         val unit =  field.unit
@@ -113,18 +121,19 @@ open class Minimal {
 
         /**
          * Directly update all fields in this Block
+         * @return A list of all modbus queries that have been done (with duration and status)
          */
-        fun update() = block.fields.forEach { it.update() }
+        fun update() = block.update()
 
         /**
          * All fields in this Block must be kept up-to-date
          */
-        fun need() = block.fields.forEach { it.need() }
+        fun need() = block.needAll()
 
         /**
          * All fields in this Block no longer need to be kept up-to-date
          */
-        fun unNeed() = block.fields.forEach { it.unNeed() }
+        fun unNeed() = block.unNeedAll()
 
 
         // ==========================================

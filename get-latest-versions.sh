@@ -24,4 +24,7 @@ find content -type f -name '*.main.kts' -print0 | xargs -0 -n1 sed -i "s@:Depend
 find content -type f -name '*.main.kts' -print0 | xargs -0 -n1 sed -i "s@:DependsOn.\"nl.basjes.modbus.devices:modbus-device-thermia-genesis:[^\"]\+\")@:DependsOn(\"nl.basjes.modbus.devices:modbus-device-thermia-genesis:${MODBUS_DEVICE_THERMIA_GENESIS_VERSION}\")@g"
 find content -type f -name '*.main.kts' -print0 | xargs -0 -n1 sed -i "s@:DependsOn.\"nl.basjes.sunspec:sunspec-device:[^\"]\+\")@:DependsOn(\"nl.basjes.sunspec:sunspec-device:${SUNSPEC_DEVICE_VERSION}\")@g"
 
+# Some of the code in the documentation is actually generated using the real software.
+( cd content/code && ./update-generated.sh )
+
 git status
