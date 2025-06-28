@@ -47,9 +47,8 @@ Now create a docker compose config which
 {{< code language="yaml" source="/code/graphql/sunspec/docker-compose.yml" >}}
 {{< /notice >}}
 
-
 ## Using GraphQL
-When you run the GraphQL service and open `http://localhots:8080` you get a GraphiQL interface that allows you to manually try everything out. 
+When you run the GraphQL service and open `http://localhost:8080` you get a GraphiQL interface that allows you to manually try everything out. 
 
 Then something like this can be queried via GraphQL:
 ```graphql
