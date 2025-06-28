@@ -60,7 +60,6 @@ Things I will **NOT** change/fix:
 Things I intend to build/fix:
 
 - Support for Coils and Discrete Inputs (Only Registers right now).
-- I want to have an API gateway that speaks GraphQL and can connect to any Modbus device you have the schema for.
 
 ## Overall status
 
