@@ -1,0 +1,6 @@
+services:
+  sunspec-graphql:
+    image: nielsbasjes/sunspec-graphql:latest
+    command: '--sunspec.host=sunspec.iot.basjes.nl --sunspec.port=502 --sunspec.unit=126'
+    ports:
+      - 8080:8080

@@ -1,0 +1,9 @@
+services:
+  minimal-graphql:
+    image: nielsbasjes/modbus-tcp-graphql:latest
+    command: '--modbus.host=modbus.iot.basjes.nl --modbus.port=502 --modbus.unit=1'
+    volumes:
+      # INSIDE the docker image it MUST become "/ModbusSchema.yaml"
+      - ./minimal.yaml:/ModbusSchema.yaml:ro
+    ports:
+      - 8080:8080

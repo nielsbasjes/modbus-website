@@ -38,31 +38,11 @@ name = "<i class='fab fa-git-square'></i> Modbus Schema: Repo"
 url = "https://github.com/nielsbasjes/modbus-schema"
 weight = 10
 
-#[[menu.shortcuts]]
-#name = "<i class='fa fa-bug'></i> Modbus Schema: Issues"
-#url = "https://github.com/nielsbasjes/modbus-schema/issues"
-#weight = 11
-#
-#[[menu.shortcuts]]
-#name = '<i class="fa-solid fa-screwdriver-wrench"></i> Modbus Schema: <img alt="Github actions Build status" src="https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-schema/build.yml?branch=main"/>'
-#url = "https://github.com/nielsbasjes/modbus-schema/actions"
-#weight = 12
-
 # -------------------------------------------------------------
 [[menu.shortcuts]]
 name = "<i class='fab fa-git-square'></i> Device Schemas: Repo"
 url = "https://github.com/nielsbasjes/modbus-devices"
 weight = 20
-
-#[[menu.shortcuts]]
-#name = "<i class='fa fa-bug'></i> Device Schemas: Issues"
-#url = "https://github.com/nielsbasjes/modbus-devices/issues"
-#weight = 21
-#
-#[[menu.shortcuts]]
-#name = '<i class="fa-solid fa-screwdriver-wrench"></i> Device Schemas: <img alt="Github actions Build status" src="https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-schema/build.yml?branch=main"/>'
-#url = "https://github.com/nielsbasjes/modbus-devices/actions"
-#weight = 22
 
 # -------------------------------------------------------------
 [[menu.shortcuts]]
@@ -70,46 +50,11 @@ name = "<i class='fab fa-git-square'></i> Sunspec: Repo"
 url = "https://github.com/nielsbasjes/sunspec-device"
 weight = 30
 
-#[[menu.shortcuts]]
-#name = "<i class='fa fa-bug'></i> Sunspec: Issues"
-#url = "https://github.com/nielsbasjes/sunspec-device/issues"
-#weight = 31
-#
-#[[menu.shortcuts]]
-#name = '<i class="fa-solid fa-screwdriver-wrench"></i> Sunspec: <img alt="Github actions Build status" src="https://img.shields.io/github/actions/workflow/status/nielsbasjes/sunspec-device/build.yml?branch=main"/>'
-#url = "https://github.com/nielsbasjes/sunspec-device/actions"
-#weight = 32
-
-
-
-#I have split this into 3 projects:
-#- [Modbus Schema](https://github.com/nielsbasjes/modbus-schema):
-#- A toolkit and schema definition
-#- [![License](https://img.shields.io/:license-apache-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-#[![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-schema/build.yml?branch=main&label=main%20branch)](https://github.com/nielsbasjes/modbus-schema/actions) [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.modbus/modbus-schema-parent.svg?label=Maven%20Central)](https://central.sonatype.com/namespace/nl.basjes.modbus)
-#[![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/nl/basjes/modbus/modbus-schema-parent/badge.json)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/nl/basjes/modbus/modbus-schema-parent/README.md)
-#[![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/modbus-schema?label=GitHub%20stars)](https://github.com/nielsbasjes/modbus-schema/stargazers)
-#
-#- [Modbus Devices](https://github.com/nielsbasjes/modbus-devices):
-#- The actual schemas of a few devices.
-#- [![License](https://img.shields.io/:license-apache-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-#[![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-devices/build.yml?branch=main&label=main%20branch)](https://github.com/nielsbasjes/modbus-devices/actions)
-#[![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.modbus.devices/modbus-devices-parent.svg?label=Maven%20Central)](https://central.sonatype.com/namespace/nl.basjes.modbus.devices)
-#[![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/nl/basjes/modbus/devices/modbus-devices-parent/badge.json)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/nl/basjes/modbus/devices/modbus-devices-parent/README.md)
-#[![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/modbus-devices?label=GitHub%20stars)](https://github.com/nielsbasjes/modbus-devices/stargazers)
-#
-#- [SunSpec Device](https://github.com/nielsbasjes/sunspec-device):
-#- Generate the Modbus Schema for the specific SunSpec you have
-#- [![License](https://img.shields.io/:license-apache-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-#[![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/sunspec-device/build.yml?branch=main&label=main%20branch)](https://github.com/nielsbasjes/sunspec-device/actions)
-#[![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.sunspec/sunspec-device-parent.svg?label=Maven%20Central)](https://central.sonatype.com/namespace/nl.basjes.sunspec)
-#[![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/nl/basjes/sunspec/sunspec-device-parent/badge.json)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/nl/basjes/sunspec/sunspec-device-parent/README.md)
-#[![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/sunspec-device?label=GitHub%20stars)](https://github.com/nielsbasjes/sunspec-device/stargazers)
-#
-#The documentation can be found here [https://modbus.basjes.nl/](https://modbus.basjes.nl/)
-#
-#All of this was created by [Niels Basjes](https://niels.basjes.nl/).
-
+# -------------------------------------------------------------
+[[menu.shortcuts]]
+name = "<i class='fab fa-git-square'></i> Modbus GraphQL: Repo"
+url = "https://github.com/nielsbasjes/modbus-graphql"
+weight = 40
 
 #[[menu.shortcuts]]
 #name = '<img alt="License" src="https://img.shields.io/:license-apache-blue.svg"/>'
