@@ -20,6 +20,7 @@ This toolkit mainly consist of the following components:
     - Eastron SDM 630 Electricity Meter
     - Thermia Genesis Heatpump
     - SunSpec compliant devices.
+- A generic (i.e. works with all schemas with almost no effort) GraphQL wrapper that enables access to any Modbus device over GraphQL.
 
 {{% notice style="info" title="Intended as an open mapping standard" %}}
 The way the mapping is defined is an open format and can be reimplemented into any programming language by anyone.
