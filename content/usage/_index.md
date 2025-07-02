@@ -198,7 +198,7 @@ which you then need to load in your application:
 {{< tabs >}}
 {{% tab title="Kotlin" %}}
 ```kotlin
-val schema = File("example.yaml").readText(Charsets.UTF_8)
+val schema = File("example.yaml").readText(Charsets.UTF_8).toSchemaDevice()
 ```
 {{% /tab %}}
 
