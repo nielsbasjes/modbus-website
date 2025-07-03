@@ -187,8 +187,6 @@ fun runLoop(device: ThermiaGenesis, mqttClient: MqttClient?, mqttTopic: String) 
             return
         }
     }
-
-    println("Stopping.")
 }
 
 fun Field.jsonFieldName() = "${this.block.id} ${this.id}".replace(Regex("[^a-zA-Z0-9_]"), "_")
@@ -237,7 +235,7 @@ mqtt:
             if (!it.isSystem && it.value != null) {
                 val jsonFieldName = it.jsonFieldName()
                 // Building a name that looks 'ok' in Home Assistant
-                var name = it.block.id + " - " + it.description
+                val name = it.block.id + " - " + it.description
 
                 println(
                     """
