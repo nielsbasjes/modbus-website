@@ -13,7 +13,7 @@ Just create a docker compose config which provides the modbus parameters to conn
 
 Or run it directly on the commandline with something like this:
 ```bash
-sudo docker run nielsbasjes/sunspec-graphql:latest --sunspec.host=sunspec.iot.basjes.nl  --sunspec.port=502  --sunspec.unit=126
+sudo docker run -p8080:8080 nielsbasjes/sunspec-graphql:latest --sunspec.host=sunspec.iot.basjes.nl  --sunspec.port=502  --sunspec.unit=126
 ```
 
 When you run this you'll get a GraphiQL UI at http://localhost:8080
