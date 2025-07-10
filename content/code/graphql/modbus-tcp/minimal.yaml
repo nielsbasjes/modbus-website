@@ -1,6 +1,6 @@
-# $schema: https://modbus.basjes.nl/v1/ModbusSchema.json
+# $schema: https://modbus.basjes.nl/v2/ModbusSchema.json
 description: 'A very simple demo schema'
-schemaFeatureLevel: 1
+schemaFeatureLevel: 2
 
 blocks:
   - id: 'Block 1'
@@ -17,8 +17,8 @@ blocks:
 tests:
   - id: 'Just to demo the test capability'
     input:
-      - firstRegisterAddress: 'hr:0'
-        registers: |2-
+      - firstAddress: 'hr:0'
+        rawValues: |2-
           # --------------------------------------
           # The name is here
           4e69 656c 7320 4261 736a 6573 0000 0000 0000 0000 

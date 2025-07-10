@@ -176,9 +176,9 @@ if (!schemaDevice.initialize()) {
 
 The same can be put in a Yaml file like this:
 ```yaml
-# $schema: https://modbus.basjes.nl/v1/ModbusSchema.json
+# $schema: https://modbus.basjes.nl/v2/ModbusSchema.json
 description: 'Demo based on a SunSpec device schema'
-schemaFeatureLevel: 1
+schemaFeatureLevel: 2
 
 blocks:
   - id: 'Block 1'
