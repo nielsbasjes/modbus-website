@@ -1,5 +1,5 @@
 //
-// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.10.0
+// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.11.0
 // Using the builtin template to generate Kotlin TEST code.
 // https://modbus.basjes.nl
 //
@@ -36,11 +36,15 @@ internal class TestMinimal {
     fun verifyProvidedTest_JustToDemoTheTestCapability() {
         val modbusDevice = MockedModbusDevice.builder().build()
         val minimal = Minimal().connect(modbusDevice)
-        modbusDevice.addRegisters(Address.of("hr:00000"), """
+        modbusDevice.addModbusValues(Address.of("hr:00000"), """
             4E69 656C 7320 4261 736A 6573 0000 0000 0000 0000
             0000 0000
             """.trimIndent());
+        modbusDevice.addModbusValues(Address.of("c:00000"), """
+            0
+            """.trimIndent());
         minimal.updateAll()
         assertEquals("Niels Basjes", minimal.block1.name.value)
+        assertEquals(false, minimal.block2.flag.value)
     }
 }

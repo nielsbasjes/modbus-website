@@ -14,6 +14,17 @@ blocks:
 #        system: true
         expression: 'utf8(hr:0 # 12)'
 
+  - id: 'Block 2'
+    description: 'The second block'
+    fields:
+      - id: 'Flag'
+        description: 'The flag Field'
+        # If a field NEVER changes value then set this to true
+#        immutable: true
+        # If a field is not a user level usable value set this to true (for example a scaling factor)
+#        system: true
+        expression: 'boolean(c:0)'
+
 tests:
   - id: 'Just to demo the test capability'
     input:
@@ -24,7 +35,16 @@ tests:
           4e69 656c 7320 4261 736a 6573 0000 0000 0000 0000 
           0000 0000
 
+      - firstAddress: 'c:0'
+        rawValues: |2-
+          # --------------------------------------
+          # The flag is here
+          0
+
     blocks:
       - id:          'Block 1'
         expected:
           'Name':    [ 'Niels Basjes' ]
+      - id:          'Block 2'
+        expected:
+          'Flag':    [ 'false' ]

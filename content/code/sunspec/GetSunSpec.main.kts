@@ -1,7 +1,7 @@
 #!/usr/bin/env kotlin
 
 // Include the needed libraries
-@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.10.0")
+@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.11.0")
 @file:DependsOn("nl.basjes.sunspec:sunspec-device:0.6.0")
 
 // Regular Kotlin import statements

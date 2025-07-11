@@ -1,5 +1,5 @@
 //
-// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.10.0
+// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.11.0
 // Using the builtin template to generate Kotlin MAIN code.
 // https://modbus.basjes.nl
 //
@@ -177,11 +177,79 @@ open class Minimal {
                 .addRow("Block 1", "Name", "" + name.value)
         }
     }
+    // ==========================================
+    /**
+     * The second block
+     */
+    val block2 = Block2(schemaDevice);
+
+    class Block2(schemaDevice: SchemaDevice) {
+        val block: Block;
+
+        /**
+         * Directly update all fields in this Block
+         * @return A list of all modbus queries that have been done (with duration and status)
+         */
+        fun update() = block.update()
+
+        /**
+         * All fields in this Block must be kept up-to-date
+         */
+        fun need() = block.needAll()
+
+        /**
+         * All fields in this Block no longer need to be kept up-to-date
+         */
+        fun unNeed() = block.unNeedAll()
+
+
+        // ==========================================
+        /**
+         * The flag Field
+         */
+        public val flag: Flag
+        public class Flag(block: Block): DeviceField (
+            Field.builder()
+                 .block(block)
+                 .id("Flag")
+                 .description("The flag Field")
+                 .expression("boolean(c:00000)")
+                 .unit("")
+                 .immutable(false)
+                 .system(false)
+                 .fetchGroup("<<Block 2 | Flag>>")
+                 .build()) {
+            override val value get() = field.booleanValue
+        }
+
+        init {
+            this.block = Block.builder()
+              .schemaDevice(schemaDevice)
+              .id("Block 2")
+              .description("The second block")
+              .build()
+
+            this.flag = Flag(block);
+        }
+
+        override fun toString(): String {
+            val table = StringTable()
+            table.withHeaders("Block", "Field", "Value");
+            toStringTable(table)
+            return table.toString()
+        }
+
+        internal fun toStringTable(table: StringTable) {
+            table
+                .addRow("Block 2", "Flag", "" + flag.value)
+        }
+    }
 
     override fun toString(): String {
         val table = StringTable();
         table.withHeaders("Block", "Field", "Value")
         block1  .toStringTable(table)
+        block2  .toStringTable(table)
         return table.toString()
     }
 
