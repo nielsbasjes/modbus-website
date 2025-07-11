@@ -58,10 +58,6 @@ Things I will **NOT** change/fix:
 - **It is READ ONLY. So NO writing.**
     - I will not change that because I consider that too much of a risk.
 
-Things I intend to build/fix:
-
-- Support for Coils and Discrete Inputs (Only Registers right now).
-
 ## Overall status
 
 Works on my machines. Usable for experiments.
