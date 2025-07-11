@@ -181,8 +181,8 @@
         }
       },
       "required": [
-        "firstRegisterAddress",
-        "registers"
+        "firstAddress",
+        "rawValues"
       ],
       "title": "TestInput"
     }
