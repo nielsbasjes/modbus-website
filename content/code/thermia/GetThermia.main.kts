@@ -5,8 +5,8 @@
 @file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.11.0")
 @file:DependsOn("nl.basjes.modbus.devices:modbus-device-thermia-genesis:0.5.0")
 @file:DependsOn("org.json:json:20250517")
-@file:DependsOn("de.kempmobil.ktor.mqtt:mqtt-core-jvm:0.6.1")
-@file:DependsOn("de.kempmobil.ktor.mqtt:mqtt-client-jvm:0.6.1")
+@file:DependsOn("de.kempmobil.ktor.mqtt:mqtt-core-jvm:0.6.2")
+@file:DependsOn("de.kempmobil.ktor.mqtt:mqtt-client-jvm:0.6.2")
 @file:DependsOn("org.apache.logging.log4j:log4j-to-slf4j:2.24.3")
 @file:DependsOn("org.slf4j:slf4j-simple:2.0.17")
 
