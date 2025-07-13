@@ -87,6 +87,9 @@ Some notes about the operations.
 - Some operations can be made to recognize special values that mean the feature of the device at hand is not supported or disabled. In such operations you can specify a sequence of register values that indicate this fact. If you see `<notImplemented>` in the operations below this is a ';' separated list of HEX register values that are to be interpreted as such.
 - Any operation that cannot provide a value must effectively indicate this to the caller. Any function that expects a value and receives such an indication must pass this to their caller.
 
+- `<discrete>` is a single value from a Coil of Discrete Input.
+- `<registers>` is single range of register values.
+
 ### Bit manipulations
 All functions work with the input being little endian.
 In case the real data is not that then these two functions and the fact that you can explicitly specify the registers in the correct order are enough to fix this.
@@ -104,7 +107,7 @@ In case the real data is not that then these two functions and the fact that you
   - Interpret the provided bytes as UTF8 and convert them to a String
 - `hexstring(<registers>)` --> String
   - Convert the provided bytes into a HEX string (i.e. "0xAB 0xCD")
-- `concat(<strings>)` --> String
+- `concat(<string> [, <string>]* )` --> String
   - Concatenate the comma separated list of Strings into 1 final string. The provided string values can also be field names and numerical values which are converted into a string before concatenation.
 
 ### Numbers
@@ -133,9 +136,19 @@ All numbers can be combined into calculations that follow PEMDAS to determine th
 - `enum(<registers> ; <notImplemented> ; <mapping>)` --> String
   - Interpret the single value in the registers as an unsigned integer and use the provided mapping to convert this value into a single String.
   - Example: `enum( ir:55 ;1->'Manual operation'; 2-> 'Defrost'; 3-> 'Hot water'; 4-> 'Heat'; 5-> 'Cool'; 6-> 'Pool'; 7-> 'Anti legionella'; 8-> 'Passive Cooling'; 98-> 'Standby' ;99-> 'No demand' ;100-> 'OFF')`
-- `bitset(<registers>)` --> Set of Strings
+- `bitset(<registers> ; <notImplemented> ; <mapping>)` --> Set of Strings
   - Interpret the bits in the registers as booleans and for each SET bit the provided String is output as part of the resulting list of values.
   - Example: The register value "0x0005" when passed through `bitset(hr:0 ; 0xDEAD ; 0-> 'Zero'; 1-> 'One'; 2-> 'Two')` will result in a set with the values "Zero" and "Two"
+
+### Booleans
+- `boolean(<discrete>)` --> Boolean
+  - This simply returns a boolean (0=false, 1=true) based upon the indicated discrete.
+- `boolean(<discrete>; <0 string> ; <1 string>)` --> String
+  - This converts the discrete value into a String using the provided mapping.
+- `boolean(<boolean>; <false string> ; <true string>)` --> String
+  - This converts the boolean value into a String using the provided mapping.
+- `bitsetbit(<registers> ; <notImplemented> ; <bitNr>)`  --> Boolean
+  - Similar to `bitset` but this returns a boolean (0=false, 1=true) based upon the indicated bit.
 
 ### Specials
 - `eui48(<3 or 4 registers>)` --> String
