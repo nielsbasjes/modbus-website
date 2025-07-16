@@ -62,92 +62,10 @@ Things I will **NOT** change/fix:
 
 Works on my machines. Usable for experiments.
 
+
 ## Overview
 
-```mermaid
----
-config:
-  flowchart:
-    htmlLabels: false
----
-flowchart TD
-    subgraph "Modbus interfacing"
-        pdev{{"Physical Modbus Device"}}
-        apiimpl["`
-            Modbus Implementation
-            *Several implementations are supported*
-        `"]
-        api["`
-            Modbus Device API
-            *Abstraction to hide the implementation details*
-        `"]
-        apiimpl --> api
-        pdev --> apiimpl
-    end
-    api --> fetch
-
-    subgraph "Schema Runtime"
-        direction TB
-        fetch["Optimizing Fetcher"]
-        cache[("`**Register cache**
-            Raw values`")]
-        schemaDev["`**Schema Device**
-            Mapping Engine`"]
-        cache --> schemaDev
-        cache <--> fetch
-    end
-
-    subgraph "SunSpec"
-        sunspecGen["`**SunSpec Schema Generator**`"]
-        sunspec["SunSpec Model definitions"]
-        sunspec --> sunspecGen
-    end
-
-    subgraph "Device definitions"
-        thermiaGenesis["`**Thermia Genesis**`"]
-        sdm630["`**Eastron SDM630**`"]
-        yaml["`**Any Device Schema in Yaml format**`"]
-        schema["`
-          **Schema**
-          Mapping Definition
-        `"]
-        schema --> schemaDev
-        yaml --> schema
-        sdm630 --> schema
-        sunspecGen --> schema
-        thermiaGenesis --> schema
-    end
-
-    api --> SunSpec
-
-    subgraph Applications
-        subgraph "Kotlin / Kotlin Script / Java"
-            subgraph "`**Field name based API**`"
-                baseApp["`
-                Using the field name based Schema Device API you can use this on your own JVM allocations.
-                This api requires retrieving the fields based on their name and asking the system for the actual return type.
-            `"]
-            end
-            
-            subgraph "`**Generated Code**`"
-                codegenJvm["`
-                A code generator has been provded that generates code (Kotlin & Java) that makes using the schema device a lot easier. For each Field a property is generated with a strongly typed return value.
-            `"]
-                
-            end
-        end
-        subgraph "Any Language"
-            subgraph "`**GraphQL Service (BETA)**`"
-                graphQL["`
-            **Currently in development**
-            A GraphQL service has been created that is able to be used a facade in front of any modbus device.
-        `"]
-            end
-        end
-    end
-    schemaDev --> Applications
-
-```
+![Overview](/ModbusSchemaToolkitOverview.png?width=1000px&lightbox=false)
 
 ## Github projects
 
