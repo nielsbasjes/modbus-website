@@ -8,10 +8,10 @@ weight = 20
   - An immutable representation of a modbus address which can handle many ways to specify a modbus address.
 - **Field**
   - Maps a set of registers into a usable value
-    - Can result in a `Long`, `Double`, `String` or `List<String>` depending on the used mapping  expression.
+    - Can result in a `Boolean`, `Long`, `Double`, `String` or `List<String>` depending on the used mapping  expression.
     - Extensive expression language is available that allows referencing other Fields in the same Block to do calculations (does PEMDAS).
 - **Block**
-  - A group of Fields that all use the same kind (for example: All Fields only use Holding Registers) of registers of a device.
+  - A group of Fields that make sense to keep together (for example: All Fields of a SunSpec Model, or all fields related to "Heating").
 - **SchemaDevice**
   - All the Blocks and Fields for a specific logical device.
 - **ModbusDevice**
@@ -29,6 +29,7 @@ I have also found that requesting part of the registers that belong to a logical
 
 Things take into consideration in the design of this toolkit:
 - **Always fetch the registers for a single field in the same modbus request.**
+  - The effect is that all addresses directly mentioned in a Field MUST be a single range without gaps. If you need to have multiple ranges combined the way to do that is to create multiple fields and reference them in the expression.
   - Some groups of fields even must be fetched in a combination in SunSpec
     - The "sync" type of a group (as used in Model 704)
 - **Only fetch what is needed.**
@@ -45,24 +46,22 @@ Things take into consideration in the design of this toolkit:
 
 So the base workflow of this library has been chosen als follows:
 
-- Obtain an instance of `SchemaDevice`
-  - This has one or more `Block`s and each has `Field`s
-  - Each `Field` has an expression.
-  - The expression dictates the `ReturnType` of the specific Field.
+1. Obtain an instance of `SchemaDevice`
+   - This has one or more `Block`s and each has one or more `Field`s
+   - Each `Field` has an expression.
+   - The expression dictates the `ReturnType` of the specific Field.
 
-- Connect to the actual Modbus Device using one of the [supported Modbus implementations](/modbus).
+2. Connect to the actual Modbus Device using one of the [supported Modbus implementations](/modbus).
 
-- Link these two together
-  - `schemaDevice.connect(modbusDevice)`
+3. Link these two together
+   - `schemaDevice.connect(modbusDevice)`
 
-- Indicate to the SchemaDevice instance which of the fields you `need`.
+4. Indicate to the SchemaDevice instance which of the fields you `need`.
 
-
-And then as often as you like (and your hardware supports!):
-- Tell it to do `update`
-  - Now the library will retrieve the needed modbus register values and remember them. This also includes when these were retrieved !
-- For each field you can now get the actual value
-
+5. And then as often as you like (and your hardware supports!):
+   - Tell it to do `update`
+     - Now the library will retrieve the needed modbus register values and remember them. This also includes the timestamp when these were retrieved !
+   - For each field you can now get the actual value and use it.
 
 ## Add the main library to your project
 

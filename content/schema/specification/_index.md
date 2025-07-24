@@ -16,11 +16,14 @@ The interpreted values can then be combined to form the desired end result.
 
 ## Device, Block, Field, Register
 
-- A device is a collection of register blocks that are all the same type (for example "input registers").
-- In each block of a device some fields can be defined that are a logical usable value which can be retrieved from the device.
-  Each field has a name that is unique within a block.
+- A device is a collection of blocks
+- A block a collection of fields that make sense to keep together (similar to a name space).
+  - Example: A heatpump has a block for 'heating' and one for 'cooling', a SunSpec device has a block per SunSpec model.
+- Fields are a essentially logical usable value which can be retrieved from the device.
+  - Each field has a name that is unique within a block.
+  - Some fields are marked as 'system' because they are intermediate values (like a scaling factor) or things like padding.
 - A field has an expression that determines where it's value comes from.
-  - This expression is usually does operations on values from registers. The expression can also be a constant, and it can also be calculated by combining values from multiple registers or even other fields.
+  - This expression is usually does operations on values from registers or discretes. The expression can also be a constant, and it can also be calculated by combining values from multiple registers or even other fields.
 
 ## Register addresses
 
@@ -87,8 +90,8 @@ Some notes about the operations.
 - Some operations can be made to recognize special values that mean the feature of the device at hand is not supported or disabled. In such operations you can specify a sequence of register values that indicate this fact. If you see `<notImplemented>` in the operations below this is a ';' separated list of HEX register values that are to be interpreted as such.
 - Any operation that cannot provide a value must effectively indicate this to the caller. Any function that expects a value and receives such an indication must pass this to their caller.
 
-- `<discrete>` is a single value from a Coil of Discrete Input.
-- `<registers>` is single range of register values.
+- `<discrete>` is a single address of a Coil of Discrete Input.
+- `<registers>` is single range of registers addresses or register values.
 
 ### Bit manipulations
 All functions work with the input being little endian.
@@ -108,7 +111,7 @@ In case the real data is not that then these two functions and the fact that you
 - `hexstring(<registers>)` --> String
   - Convert the provided bytes into a HEX string (i.e. "0xAB 0xCD")
 - `concat(<string> [, <string>]* )` --> String
-  - Concatenate the comma separated list of Strings into 1 final string. The provided string values can also be field names and numerical values which are converted into a string before concatenation.
+  - Concatenate the comma separated list of Strings into 1 final string. The provided string values can also be field names, numerical values or boolean values which are converted into a string before concatenation.
 
 ### Numbers
 - `ieee754_32(<2 registers>)` --> Floating point number
@@ -134,7 +137,7 @@ All numbers can be combined into calculations that follow PEMDAS to determine th
 ### Sets
 
 - `enum(<registers> ; <notImplemented> ; <mapping>)` --> String
-  - Interpret the single value in the registers as an unsigned integer and use the provided mapping to convert this value into a single String.
+  - Interpret the registers as an unsigned integer and use the provided mapping to convert this value into a single String.
   - Example: `enum( ir:55 ;1->'Manual operation'; 2-> 'Defrost'; 3-> 'Hot water'; 4-> 'Heat'; 5-> 'Cool'; 6-> 'Pool'; 7-> 'Anti legionella'; 8-> 'Passive Cooling'; 98-> 'Standby' ;99-> 'No demand' ;100-> 'OFF')`
 - `bitset(<registers> ; <notImplemented> ; <mapping>)` --> Set of Strings
   - Interpret the bits in the registers as booleans and for each SET bit the provided String is output as part of the resulting list of values.
