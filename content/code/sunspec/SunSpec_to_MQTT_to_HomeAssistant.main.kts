@@ -50,6 +50,8 @@ val mqttTopic            :String? = "energy/solar"
 //val mqttUser            :String? = null TODO: If you need it you must change the code a bit.
 //val mqttPassword        :String? = null TODO: If you need it you must change the code a bit.
 
+val interval = 1000L
+
 // This is useful if you want to set a different hostname (shown in the HA Gauge label and such)
 val homeAssistantDeviceName: String? = null
 
@@ -168,8 +170,6 @@ fun runLoop(device: SchemaDevice, mqttClient: MqttClient?, mqttTopic: String) {
 
     // ----------------------------------------------------------------------------------------
 
-    val interval = 1000L
-
     println("Starting read loop")
 
     while (true) {
@@ -232,8 +232,6 @@ fun runLoop(device: SchemaDevice, mqttClient: MqttClient?, mqttTopic: String) {
             return
         }
     }
-
-    println("Stopping.")
 }
 
 fun Field.jsonFieldName() = "${this.block.id} ${this.id}".replace(Regex("[^a-zA-Z0-9_]"), "_")

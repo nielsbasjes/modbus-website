@@ -39,10 +39,10 @@ To run this you'll need:
 ![SunSpec in Home Assistant](/SunSpecInHomeAssistant.png?lightbox=false)
 
 ## Relevant points
-- This is just a demo ... 
-  - Which happens to work pretty well.
+- This is an example on how simple the integration can be one. 
+  - Which is how I use it.
 
-- You can rename the script but it MUST end with `.main.kts`.
+- You can rename the script and the filename MUST end with `.main.kts`.
   - So `Something.main.kts` works and `Something.kts` does not work.
 
 - At startup your device and the requested fields is used to get all the needed information about the fields that are actually available.
@@ -54,17 +54,19 @@ To run this you'll need:
 
 - Most Modbus/SunSpec devices are very SLOW. 
   - Be conservative in the number of Fields you want to retrieve. Or reduce the refresh rate (to like once every 5 seconds).
-    - This line `timer.scheduleAtFixedRate(timerTask, 0L, 1000L)` the `1000L` is 1 second
+    - This line `val interval = 1000L` the `1000L` is 1 second
     
 - The available fields per device differ
   - I recommend using the `showAllFieldsWithUsableValues(sunSpec)` function to determine what your device CAN provide and then only ask for what it actually has.
   
 - There are a few settings you need to do.
-  - The name of the device is needed because otherwise Home Assistent will show `localhost` everywhere.
+  - The name of the device is needed because otherwise Home Assistant will show `localhost` everywhere.
     - A default name is determined from your specific device. You can overrule this using `homeAssistantDeviceName`
+  - If you leave the `mqttBrokerHost` set to `null` the output will be printed uin the console making it easy to verify if things are working.
+
 
 ## The config produced
-The generated config looks something like this (snippet only):
+The generated HA config looks something like this (example snippet only, will be different on your system!):
 {{< notice style="blue" icon="screwdriver-wrench" title="Home Assistant config fragment" expanded="true" >}}
 {{< code language="yaml" source="/code/sunspec/HomeAssistant.yaml" >}}
 {{< /notice >}}
