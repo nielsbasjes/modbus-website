@@ -156,8 +156,8 @@ fun runLoop(device: ThermiaGenesis, mqttClient: MqttClient?, mqttTopic: String) 
                     LONG       -> result.put(jsonFieldName, it.longValue       ?: 0)
                     STRING     -> result.put(jsonFieldName, it.stringValue     ?: "")
                     STRINGLIST -> result.put(jsonFieldName, it.stringListValue ?: listOf<String>())
+                    BOOLEAN    -> result.put(jsonFieldName, it.booleanValue    ?: "")
                     UNKNOWN    -> TODO()
-                    BOOLEAN    -> TODO()
                 }
             }
 

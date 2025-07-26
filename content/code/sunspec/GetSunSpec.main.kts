@@ -84,7 +84,7 @@ ModbusDeviceJ2Mod(modbusMaster, modbusUnit). use { modbusDevice ->
                     ReturnType.DOUBLE     -> field.doubleValue.toString()
                     ReturnType.STRING     -> field.stringValue.toString()
                     ReturnType.STRINGLIST -> field.stringListValue.toString()
-                    ReturnType.BOOLEAN    -> TODO("Support for Booleans is not there yet")
+                    ReturnType.BOOLEAN    -> field.booleanValue.toString()
                     ReturnType.UNKNOWN    -> "<< D'oh! >>"
                 },
                 field.unit,

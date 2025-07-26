@@ -386,12 +386,13 @@ This strong typing was done to avoid any internal conversions of the data and th
 | LONG             | .longValue                | Long             |
 | STRING           | .stringValue              | String           |
 | STRINGLIST       | .stringListValue          | List<String>     |
-| BOOLEAN          | Not yet implemented       |                  |
+| BOOLEAN          | .booleanValue             | Boolean          |
 | UNKNOWN          | This indicates a problem  |                  |
 
 Note that these will return a null in all of these cases:
 - No data has been retrieved yet for this Field.
 - There was a read error in one of the registers of this Field.
+- If one of the required other fields in the expression return null
 - You are accessing the wrong value property for this Field (i.e. use `.longValue` for a Field that returns a `String` )
 
 In one of my projects I used a library which had a separate function for each of those types and the code to use it became this. This looks like it can be combined but because of the differences in the underlying types it could not.
@@ -403,8 +404,8 @@ when(it.returnType) {
     LONG ->          it.longValue                  ?.let { value -> point.addField(label, value) }
     STRING ->        it.stringValue                ?.let { value -> point.addField(label, value) }
     STRINGLIST ->    it.stringListValue?.toString()?.let { value -> point.addField(label, value) }
+    BOOLEAN ->       it.booleanValue               ?.let { value -> point.addField(label, value) }
     UNKNOWN -> TODO()
-    BOOLEAN -> TODO()
 }
 ```
 {{% /tab %}}

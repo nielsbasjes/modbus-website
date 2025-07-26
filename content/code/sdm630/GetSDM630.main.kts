@@ -193,8 +193,8 @@ fun runLoop(sdm630: SDM630, writeApi: WriteApiBlocking?, databaseMeasurement: St
                             LONG ->          field.longValue                  ?.let { value -> point.addField(label, value) }
                             STRING ->        field.stringValue                ?.let { value -> point.addField(label, value) }
                             STRINGLIST ->    field.stringListValue?.toString()?.let { value -> point.addField(label, value) }
+                            BOOLEAN ->       field.booleanValue               ?.let { value -> point.addField(label, value) }
                             UNKNOWN -> TODO()
-                            BOOLEAN -> TODO()
                         }
                     }
 
