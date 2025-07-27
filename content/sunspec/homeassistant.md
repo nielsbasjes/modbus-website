@@ -47,10 +47,6 @@ To run this you'll need:
 
 - At startup your device and the requested fields is used to get all the needed information about the fields that are actually available.
   - The script then outputs a Home Assistant configuration YAML to the console for easier configuration for those fields.
-    
-> [!WARNING] 
-> My SMA inverter goes into a different mode after dark and then many fields no longer return a value (i.e. field not available). 
-> So this version of this script does not give the same set of fields when compared to day time. You can change that if you want.
 
 - Most Modbus/SunSpec devices are very SLOW. 
   - Be conservative in the number of Fields you want to retrieve. Or reduce the refresh rate (to like once every 5 seconds).
