@@ -62,10 +62,9 @@ Things I will **NOT** change/fix:
 
 Works on my machines. Usable for experiments.
 
-
 ## Overview
 
-![Overview](/ModbusSchemaToolkitOverview.png?width=1000px&lightbox=false)
+![Overview](/ModbusSchemaToolkitOverview.png?width=1000px)
 
 ## Github projects
 
@@ -73,31 +72,31 @@ I have split this into 4 projects:
 
 - [Modbus Schema](https://github.com/nielsbasjes/modbus-schema):
     - The main toolkit and schema definition
-    - [![License](https://img.shields.io/:license-apache-blue.svg?classes=inline)](https://www.apache.org/licenses/LICENSE-2.0.html)
-      [![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-schema/build.yml?branch=main&label=main%20branch&classes=inline)](https://github.com/nielsbasjes/modbus-schema/actions)
-      [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.modbus/modbus-schema-parent.svg?label=Maven%20Central&classes=inline)](https://central.sonatype.com/namespace/nl.basjes.modbus)
-      [![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/nl/basjes/modbus/modbus-schema-parent/badge.json&classes=inline)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/nl/basjes/modbus/modbus-schema-parent/README.md)
-      [![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/modbus-schema?label=GitHub%20stars&classes=inline)](https://github.com/nielsbasjes/modbus-schema/stargazers)
+    - [![License](https://img.shields.io/:license-apache-blue.svg?classes=inline&lightbox=false)](https://www.apache.org/licenses/LICENSE-2.0.html)
+      [![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-schema/build.yml?branch=main&label=main%20branch&classes=inline&lightbox=false)](https://github.com/nielsbasjes/modbus-schema/actions)
+      [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.modbus/modbus-schema-parent.svg?label=Maven%20Central&classes=inline&lightbox=false)](https://central.sonatype.com/namespace/nl.basjes.modbus)
+      [![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/nl/basjes/modbus/modbus-schema-parent/badge.json&classes=inline&lightbox=false)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/nl/basjes/modbus/modbus-schema-parent/README.md)
+      [![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/modbus-schema?label=GitHub%20stars&classes=inline&lightbox=false)](https://github.com/nielsbasjes/modbus-schema/stargazers)
 - [Modbus Devices](https://github.com/nielsbasjes/modbus-devices):
     - The actual schemas of a few devices.
-    - [![License](https://img.shields.io/:license-apache-blue.svg?classes=inline)](https://www.apache.org/licenses/LICENSE-2.0.html)
-      [![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-devices/build.yml?branch=main&label=main%20branch&classes=inline)](https://github.com/nielsbasjes/modbus-devices/actions)
-      [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.modbus.devices/modbus-devices-parent.svg?label=Maven%20Central&classes=inline)](https://central.sonatype.com/namespace/nl.basjes.modbus.devices)
-      [![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/nl/basjes/modbus/devices/modbus-devices-parent/badge.json&classes=inline)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/nl/basjes/modbus/devices/modbus-devices-parent/README.md)
-      [![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/modbus-devices?label=GitHub%20stars&classes=inline)](https://github.com/nielsbasjes/modbus-devices/stargazers)
+    - [![License](https://img.shields.io/:license-apache-blue.svg?classes=inline&lightbox=false)](https://www.apache.org/licenses/LICENSE-2.0.html)
+      [![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-devices/build.yml?branch=main&label=main%20branch&classes=inline&lightbox=false)](https://github.com/nielsbasjes/modbus-devices/actions)
+      [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.modbus.devices/modbus-devices-parent.svg?label=Maven%20Central&classes=inline&lightbox=false)](https://central.sonatype.com/namespace/nl.basjes.modbus.devices)
+      [![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/nl/basjes/modbus/devices/modbus-devices-parent/badge.json&classes=inline&lightbox=false)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/nl/basjes/modbus/devices/modbus-devices-parent/README.md)
+      [![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/modbus-devices?label=GitHub%20stars&classes=inline&lightbox=false)](https://github.com/nielsbasjes/modbus-devices/stargazers)
 - [SunSpec Device](https://github.com/nielsbasjes/sunspec-device):
     - Generate the Modbus Schema for the specific SunSpec you have
-    - [![License](https://img.shields.io/:license-apache-blue.svg?classes=inline)](https://www.apache.org/licenses/LICENSE-2.0.html)
-      [![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/sunspec-device/build.yml?branch=main&label=main%20branch&classes=inline)](https://github.com/nielsbasjes/sunspec-device/actions)
-      [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.sunspec/sunspec-device-parent.svg?label=Maven%20Central&classes=inline)](https://central.sonatype.com/namespace/nl.basjes.sunspec)
-      [![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/nl/basjes/sunspec/sunspec-device-parent/badge.json&classes=inline)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/nl/basjes/sunspec/sunspec-device-parent/README.md)
-      [![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/sunspec-device?label=GitHub%20stars&classes=inline)](https://github.com/nielsbasjes/sunspec-device/stargazers)
+    - [![License](https://img.shields.io/:license-apache-blue.svg?classes=inline&lightbox=false)](https://www.apache.org/licenses/LICENSE-2.0.html)
+      [![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/sunspec-device/build.yml?branch=main&label=main%20branch&classes=inline&lightbox=false)](https://github.com/nielsbasjes/sunspec-device/actions)
+      [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.sunspec/sunspec-device-parent.svg?label=Maven%20Central&classes=inline&lightbox=false)](https://central.sonatype.com/namespace/nl.basjes.sunspec)
+      [![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/nl/basjes/sunspec/sunspec-device-parent/badge.json&classes=inline&lightbox=false)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/nl/basjes/sunspec/sunspec-device-parent/README.md)
+      [![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/sunspec-device?label=GitHub%20stars&classes=inline&lightbox=false)](https://github.com/nielsbasjes/sunspec-device/stargazers)
 - [Modbus GraphQL](https://github.com/nielsbasjes/modbus-graphql):
     - Wrap any Modbus Schema and serve a device over GraphQL
-    - [![License](https://img.shields.io/:license-apache-blue.svg?classes=inline)](https://www.apache.org/licenses/LICENSE-2.0.html)
-      [![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-graphql/build.yml?branch=main&label=main%20branch&classes=inline)](https://github.com/nielsbasjes/modbus-graphql/actions)
-      [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.modbus.graphql/modbus-graphql-parent.svg?label=Maven%20Central&classes=inline)](https://central.sonatype.com/namespace/nl.basjes.sunspec)
-      [![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/modbus-graphql?label=GitHub%20stars&classes=inline)](https://github.com/nielsbasjes/modbus-graphql/stargazers)
+    - [![License](https://img.shields.io/:license-apache-blue.svg?classes=inline&lightbox=false)](https://www.apache.org/licenses/LICENSE-2.0.html)
+      [![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-graphql/build.yml?branch=main&label=main%20branch&classes=inline&lightbox=false)](https://github.com/nielsbasjes/modbus-graphql/actions)
+      [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.modbus.graphql/modbus-graphql-parent.svg?label=Maven%20Central&classes=inline&lightbox=false)](https://central.sonatype.com/namespace/nl.basjes.sunspec)
+      [![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/modbus-graphql?label=GitHub%20stars&classes=inline&lightbox=false)](https://github.com/nielsbasjes/modbus-graphql/stargazers)
 - [Modbus Website](https://github.com/nielsbasjes/modbus-website):
     - The source code of this website
 

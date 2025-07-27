@@ -3,12 +3,10 @@ title = 'Design'
 weight = 60
 +++
 
+# My original design sketches from a few years ago (~2023)
 {{% notice style="red" icon="info" title="Original sketches" %}}
-My original design sketches from a few years ago (~2023). Looking back a lot has worked out already.
+Some parts have been implemented differently !
 {{% /notice %}}
-
-:
-
 
 ```mermaid
 mindmap
@@ -18,7 +16,7 @@ mindmap
             Schema standard
                 Schema for device ONCE
                 Runtimes
-                    Simply "do" the provided schema
+                    Simply 'do' the provided schema
                     Code generator per language
         Ecosystem
             Vendors provide schema
@@ -29,7 +27,7 @@ mindmap
                 J2MOD
                 PLC4J/PLC4X
     Mapping
-        From "Generic Retrieval API"<br/>to"usable value"
+        From 'Generic Retrieval API' to 'usable value'
             Support 'all' common formats
                 Little/BigEndian
                 uint/int 16/32/64/128
