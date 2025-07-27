@@ -144,8 +144,9 @@ All numbers can be combined into calculations that follow PEMDAS to determine th
   - Example: The register value "0x0005" when passed through `bitset(hr:0 ; 0xDEAD ; 0-> 'Zero'; 1-> 'One'; 2-> 'Two')` will result in a set with the values "Zero" and "Two"
 
 ### Booleans
+- `true` or `false`     --> Boolean
 - `boolean(<discrete>)` --> Boolean
-  - This simply returns a boolean (0=false, 1=true) based upon the indicated discrete.
+  - This simply returns a boolean (0=false, 1=true) based upon the indicated discrete address (coil or discrete input).
 - `boolean(<discrete>; <0 string> ; <1 string>)` --> String
   - This converts the discrete value into a String using the provided mapping.
 - `boolean(<boolean>; <false string> ; <true string>)` --> String

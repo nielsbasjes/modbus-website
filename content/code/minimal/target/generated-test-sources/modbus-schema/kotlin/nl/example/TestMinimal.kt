@@ -45,6 +45,6 @@ internal class TestMinimal {
             """.trimIndent());
         minimal.updateAll()
         assertEquals("Niels Basjes", minimal.block1.name.value)
-        assertEquals(false, minimal.block2.flag.value)
+        assertEquals(false, minimal.block1.flag.value)
     }
 }

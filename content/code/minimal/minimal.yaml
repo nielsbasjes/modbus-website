@@ -14,9 +14,6 @@ blocks:
 #        system: true
         expression: 'utf8(hr:0 # 12)'
 
-  - id: 'Block 2'
-    description: 'The second block'
-    fields:
       - id: 'Flag'
         description: 'The flag Field'
         # If a field NEVER changes value then set this to true
@@ -45,6 +42,4 @@ tests:
       - id:          'Block 1'
         expected:
           'Name':    [ 'Niels Basjes' ]
-      - id:          'Block 2'
-        expected:
           'Flag':    [ 'false' ]

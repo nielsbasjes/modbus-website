@@ -10,22 +10,22 @@
 //       EVERY TIME THE SOFTWARE IS BUILD THIS FILE IS
 //        REGENERATED AND ALL MANUAL CHANGES ARE LOST
 // ===========================================================
-PACKAGE: nl.example;
-CLASS: Minimal
+PACKAGE: nl.example
+CLASS:   Minimal
 
 // ==========================================
 BLOCK: Block1 -> id = "Block 1" ; description = "The first block"
 // FIELDS
     // ==========================================
-    FIELD: Name ; id = "Name"; description = "The name Field"; unit = ""; immutable = false; system = false; fetchGroup = "<<Block 1 | Name>>"
-           GETTER     = field.getStringValue();
-           EXPRESSION = utf8(hr:00000 # 12)
-           REWRITE    = UTF8String( )
+    FIELD: Name ; id = "Name"; description = "The name Field"; unit = ""; immutable = false; system = false; fetchGroup = "<<Block 1 | Name>>" ))
+           GETTER               = field.getStringValue();
+           ORIGINAL  EXPRESSION = utf8(hr:00000 # 12)
+           REWRITTEN EXPRESSION = UTF8String( GetModbusRegisters( 4x00001, 4x00002, 4x00003, 4x00004, 4x00005, 4x00006, 4x00007, 4x00008, 4x00009, 4x00010, 4x00011, 4x00012 ) )
 // ==========================================
 BLOCK: Block2 -> id = "Block 2" ; description = "The second block"
 // FIELDS
     // ==========================================
-    FIELD: Flag ; id = "Flag"; description = "The flag Field"; unit = ""; immutable = false; system = false; fetchGroup = "<<Block 2 | Flag>>"
-           GETTER     = field.getBooleanValue();
-           EXPRESSION = boolean(c:00000)
-           REWRITE    = 
+    FIELD: Flag ; id = "Flag"; description = "The flag Field"; unit = ""; immutable = false; system = false; fetchGroup = "<<Block 2 | Flag>>" ))
+           GETTER               = field.getBooleanValue();
+           ORIGINAL  EXPRESSION = boolean(c:00000)
+           REWRITTEN EXPRESSION = GetModbusDiscretes( 0x00001 )

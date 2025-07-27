@@ -155,54 +155,6 @@ open class Minimal {
             override val value get() = field.stringValue
         }
 
-        init {
-            this.block = Block.builder()
-              .schemaDevice(schemaDevice)
-              .id("Block 1")
-              .description("The first block")
-              .build()
-
-            this.name = Name(block);
-        }
-
-        override fun toString(): String {
-            val table = StringTable()
-            table.withHeaders("Block", "Field", "Value");
-            toStringTable(table)
-            return table.toString()
-        }
-
-        internal fun toStringTable(table: StringTable) {
-            table
-                .addRow("Block 1", "Name", "" + name.value)
-        }
-    }
-    // ==========================================
-    /**
-     * The second block
-     */
-    val block2 = Block2(schemaDevice);
-
-    class Block2(schemaDevice: SchemaDevice) {
-        val block: Block;
-
-        /**
-         * Directly update all fields in this Block
-         * @return A list of all modbus queries that have been done (with duration and status)
-         */
-        fun update() = block.update()
-
-        /**
-         * All fields in this Block must be kept up-to-date
-         */
-        fun need() = block.needAll()
-
-        /**
-         * All fields in this Block no longer need to be kept up-to-date
-         */
-        fun unNeed() = block.unNeedAll()
-
-
         // ==========================================
         /**
          * The flag Field
@@ -217,7 +169,7 @@ open class Minimal {
                  .unit("")
                  .immutable(false)
                  .system(false)
-                 .fetchGroup("<<Block 2 | Flag>>")
+                 .fetchGroup("<<Block 1 | Flag>>")
                  .build()) {
             override val value get() = field.booleanValue
         }
@@ -225,10 +177,11 @@ open class Minimal {
         init {
             this.block = Block.builder()
               .schemaDevice(schemaDevice)
-              .id("Block 2")
-              .description("The second block")
+              .id("Block 1")
+              .description("The first block")
               .build()
 
+            this.name = Name(block);
             this.flag = Flag(block);
         }
 
@@ -241,7 +194,8 @@ open class Minimal {
 
         internal fun toStringTable(table: StringTable) {
             table
-                .addRow("Block 2", "Flag", "" + flag.value)
+                .addRow("Block 1", "Name", "" + name.value)
+                .addRow("Block 1", "Flag", "" + flag.value)
         }
     }
 
@@ -249,7 +203,6 @@ open class Minimal {
         val table = StringTable();
         table.withHeaders("Block", "Field", "Value")
         block1  .toStringTable(table)
-        block2  .toStringTable(table)
         return table.toString()
     }
 

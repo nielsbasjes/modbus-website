@@ -23,12 +23,12 @@ Official Modbus mappings:
   - if specific modules have been installed (you'll see for example `(EM)` or `(EM3 only)` in the description of a Field).
   - if specific functionality is used (like swimming pool)
 
-- Status: **All registers in the documentation have been put into the schema definition.**
+- Status: **All registers and discretes in the documentation have been put into the schema definition.**
 
 - Schema as Yaml: [ThermiaGenesis101213.yaml](https://github.com/nielsbasjes/modbus-devices/blob/main/modbus-device-thermia-genesis/ThermiaGenesis101213.yaml)
 
-> [!WARNING]
-> The Coils and Discrete Inputs (i.e. binary values) are not yet available because I have not yet implemented these at all in this Toolkit
+I have also created for version 13 a schema where all Fields have been put into blocks based on the area of use (the "Reference to" column in the original PDFs)
+- Schema as Yaml: [ThermiaGenesis13.yaml](https://github.com/nielsbasjes/modbus-devices/blob/main/modbus-device-thermia-genesis/ThermiaGenesis13.yaml)
 
 The schema is also available as pre generated Kotlin code.
 {{< tabs >}}
