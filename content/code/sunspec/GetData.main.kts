@@ -1,8 +1,8 @@
 #!/usr/bin/env kotlin
 
 // Include the needed libraries
-@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.12.0")
-@file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.12.0")
+@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.14.0")
+@file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.14.0")
 
 // Regular Kotlin import statements
 import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT

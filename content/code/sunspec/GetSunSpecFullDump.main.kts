@@ -1,8 +1,8 @@
 #!/usr/bin/env kotlin
 
 // Include the needed libraries
-@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.12.0")
-@file:DependsOn("nl.basjes.sunspec:sunspec-device:0.7.1")
+@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.14.0")
+@file:DependsOn("nl.basjes.sunspec:sunspec-device:0.7.3")
 
 // Regular Kotlin import statements
 import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster

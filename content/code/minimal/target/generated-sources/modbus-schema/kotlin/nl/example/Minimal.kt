@@ -1,5 +1,5 @@
 //
-// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.12.0
+// Generated using the nl.basjes.modbus:modbus-schema-maven-plugin:0.14.0
 // Using the builtin template to generate Kotlin MAIN code.
 // https://modbus.basjes.nl
 //
