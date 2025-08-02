@@ -1,34 +1,35 @@
 +++
-title = 'Schema'
+title = 'Schema Specification'
 weight = 30
 +++
 
-# Schema concept:
-There are modbus devices that (within a single function and set of registers) have defined blocks with registers that belong together.
+## Introduction
+This is a way of defining a schema for a modbus device.
+It includes way of specifying sets of registers and methods that manipulate and interpret these registers.
+The interpreted values can then be combined to form the desired end result.
 
-In most modbus devices a schema is only a single block and any variable can be retrieved independently.
+## The parts of a schema
+In this toolkit a modbus schema consist of these parts
+- Device specific settings
+- All the meaningful fields and the mapping on how to obtain them from the underlying modbus values provided by the physical device. 
+- Tests that relate a set of raw register/discrete values to the expected meaningful values.
+  - This can be used to make it easier to verify the expressions in the fields and to test new implementations of this library (when others want to reimplement it in a different language)
 
-SunSpec is the best example where it works differently.
+{{% children %}}
 
-Sunspec is really a meta-schema where you retrieve the actual set of schema blocks that are present on the device.
-So the offset of such a block on the actual device varies because each type of device has a different list of blocks.
+<!--
+  Modbus Schema Toolkit
+  Copyright (C) 2019-2025 Niels Basjes
 
-In Sunspec these blocks are called models and each of those has groups that can have the requirement of being fetched in a single request or can repeat multiple times.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-So in this schema standard we have
+  https://www.apache.org/licenses/LICENSE-2.0
 
-- **Schema**:
-    - A set of blocks for a single device with the same base parameters (like same base offset and functioncode)
-- **Block**:
-    - A group of fields which are based on registers (with optionally its own offset from the schema)
-- **Field**:
-    - A single _logical value_ that is based on 1 or more registers within the block.
-    - A field can have a 'fetch group' value which indicates that it can only be fetched if the entire 'fetch group' is fetched.
-    - A field can have the immutable flag which means there is no need to read it again on a refresh of the data.
-- **Register**: A modbus register that needs to be fetched. All registers with the same 'fetch group' value are always retrieved in a single modbus request.
-
-Remarks about the 'fetch group':
-- By default, a register does not have a fetch group.
-- If a field needs a register then that register gets a fetch group from the field.
-    - The normal 'fetch group' value from a field is an id based upon the Field itself.
-    - If a Field has an explicit 'fetch group' then that is used.
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->

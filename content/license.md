@@ -1,7 +1,7 @@
 +++
 title = "License"
 type = "home"
-weight = 80
+weight = 100
 +++
 
 I'm publishing this under the Apache 2.0 license because I believe this can be part of making this planet a bit more in control of the energy consumption.

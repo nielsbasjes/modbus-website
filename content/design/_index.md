@@ -1,6 +1,6 @@
 +++
 title = 'Design'
-weight = 60
+weight = 70
 +++
 
 # My original design sketches from a few years ago (~2023)

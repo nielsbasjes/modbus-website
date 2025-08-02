@@ -1,12 +1,13 @@
 #!/usr/bin/env kotlin
 
 // Include the needed libraries
-@file:DependsOn("nl.basjes.modbus:modbus-api-plc4j:0.14.0")
+@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.14.0")
 @file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.14.0")
 
 // Regular Kotlin import statements
+import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster
 import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT
-import nl.basjes.modbus.device.plc4j.ModbusDevicePlc4j
+import nl.basjes.modbus.device.j2mod.ModbusDeviceJ2Mod
 import nl.basjes.modbus.schema.get
 import nl.basjes.modbus.schema.toSchemaDevice
 import nl.basjes.modbus.schema.toTable
@@ -19,9 +20,9 @@ val modbusPort        = MODBUS_STANDARD_TCP_PORT
 val modbusUnit        = 1
 
 print("Modbus: Connecting...")
-// Connect to the real Modbus device over TCP using the Apache PLC4J library
-ModbusDevicePlc4j("modbus-tcp:tcp://${modbusIp}:${modbusPort}?unit-identifier=${modbusUnit}")
-    .use { modbusDevice ->
+val modbusMaster = ModbusTCPMaster(modbusHost, modbusPort)
+modbusMaster.connect()
+ModbusDeviceJ2Mod(modbusMaster, modbusUnit). use { modbusDevice ->
     println(" done")
 
     // Read the schema from a file
@@ -54,7 +55,7 @@ ModbusDevicePlc4j("modbus-tcp:tcp://${modbusIp}:${modbusPort}?unit-identifier=${
     device.createTestsUsingCurrentRealData()
 
     // And print the entire thing as a reusable schema yaml (which now has 2 test scenarios!!)
-    println("#-------------- BEGIN: MODBUS SCHEMA --------------")
+    println("#-------------- BEGIN: MODBUS SCHEMA IN YAML FORMAT --------------")
     println(device.toYaml())
-    println("#-------------- END: MODBUS SCHEMA ----------------")
+    println("#-------------- END: MODBUS SCHEMA IN YAML FORMAT ----------------")
 }

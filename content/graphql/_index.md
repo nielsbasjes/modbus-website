@@ -1,6 +1,6 @@
 +++
 title = 'GraphQL'
-weight = 55
+weight = 60
 +++
 
 Only being able to use Modbus and give meaning to the registers in a local application is a good start. It really becomes interesting when existing tools are able to consume the data without doing any magic. 
