@@ -14,7 +14,7 @@ This toolkit mainly consist of the following components:
 
 - A generic definition language for creating a modbus mapping (a Modbus Schema).
     - i.e. translate binary values to meaningful values
-- A Kotlin/Java 11 (JVM only) library that uses this mapping definition to optimize the retrieval of the underlying data
+- A Kotlin/Java 17 (JVM only) library that uses this mapping definition to optimize the retrieval of the underlying data
   and provide the desired meaningful values.
 - A collection ready to run schemas (all the devices I have...):
     - Eastron SDM 630 Electricity Meter
