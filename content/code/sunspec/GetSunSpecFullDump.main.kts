@@ -1,4 +1,4 @@
-#!/usr/bin/env kotlin
+#!/usr/bin/env -S kotlin -howtorun .main.kts 
 
 // Include the needed libraries
 @file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.14.0")

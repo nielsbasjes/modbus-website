@@ -42,8 +42,8 @@ To run this you'll need:
 - This is an example on how simple the integration can be one. 
   - Which is how I use it.
 
-- You can rename the script and the filename MUST end with `.main.kts`.
-  - So `Something.main.kts` works and `Something.kts` does not work.
+- You can rename the script to a name of your liking.
+  - Note that keeping the `.main.kts` end will let editors like IntelliJ know this is a Koltin script and give ou better editor support. 
 
 - At startup your device and the requested fields is used to get all the needed information about the fields that are actually available.
   - The script then outputs a Home Assistant configuration YAML to the console for easier configuration for those fields.

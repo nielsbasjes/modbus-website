@@ -1,4 +1,4 @@
-#!/usr/bin/env kotlin
+#!/usr/bin/env -S kotlin -howtorun .main.kts 
 
 @file:DependsOn("org.jetbrains.kotlin:kotlin-stdlib:2.2.0")
 @file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.14.0")
