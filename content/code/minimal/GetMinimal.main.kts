@@ -15,7 +15,7 @@ import nl.basjes.modbus.schema.toYaml
 import java.io.File
 
 // The hostname to connect to
-val modbusIp          = "modbus.iot.basjes.nl"
+val modbusHost        = "modbus.iot.basjes.nl"
 val modbusPort        = MODBUS_STANDARD_TCP_PORT
 val modbusUnit        = 1
 

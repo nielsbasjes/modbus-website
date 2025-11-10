@@ -5,8 +5,9 @@
 @file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.14.0")
 
 // Regular Kotlin import statements
+import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster
 import nl.basjes.modbus.device.api.MODBUS_STANDARD_TCP_PORT
-import nl.basjes.modbus.device.plc4j.ModbusDevicePlc4j
+import nl.basjes.modbus.device.j2mod.ModbusDeviceJ2Mod
 import nl.basjes.modbus.schema.get
 import nl.basjes.modbus.schema.toSchemaDevice
 import nl.basjes.modbus.schema.toTable
@@ -14,7 +15,7 @@ import nl.basjes.modbus.schema.toYaml
 import java.io.File
 
 // The hostname to connect to
-val modbusIp          = "sunspec.iot.basjes.nl"
+val modbusHost        = "sunspec.iot.basjes.nl"
 
 // Use the standards for SunSpec to connect to the device
 val modbusPort        = MODBUS_STANDARD_TCP_PORT
