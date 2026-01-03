@@ -6,4 +6,4 @@ services:
       # INSIDE the docker image it MUST become "/ModbusSchema.yaml"
       - ./minimal.yaml:/ModbusSchema.yaml:ro
     ports:
-      - 8080:8080
+       - "8080:8080"
