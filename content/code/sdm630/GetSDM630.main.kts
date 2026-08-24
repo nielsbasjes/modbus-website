@@ -78,92 +78,92 @@ fun runLoop(sdm630: SDM630, writeApi: WriteApiBlocking?, databaseMeasurement: St
     // Use these fields as Measurements towards InfluxDB
     val allFields = mutableMapOf<String, Field>()
 
-    allFields.put("SDM630_Phase_1_line_to_neutral_volts_Volts",             sdm630.measurements.phase1LineToNeutralVolts        .field)
-    allFields.put("SDM630_Phase_2_line_to_neutral_volts_Volts",             sdm630.measurements.phase2LineToNeutralVolts        .field)
-    allFields.put("SDM630_Phase_3_line_to_neutral_volts_Volts",             sdm630.measurements.phase3LineToNeutralVolts        .field)
-    allFields.put("SDM630_Phase_1_current_Amps",                            sdm630.measurements.phase1Current                   .field)
-    allFields.put("SDM630_Phase_2_current_Amps",                            sdm630.measurements.phase2Current                   .field)
-    allFields.put("SDM630_Phase_3_current_Amps",                            sdm630.measurements.phase3Current                   .field)
-    allFields.put("SDM630_Phase_1_power_Watts",                             sdm630.measurements.phase1Power                     .field)
-    allFields.put("SDM630_Phase_2_power_Watts",                             sdm630.measurements.phase2Power                     .field)
-    allFields.put("SDM630_Phase_3_power_Watts",                             sdm630.measurements.phase3Power                     .field)
-    allFields.put("SDM630_Phase_1_volt_amps_VA",                            sdm630.measurements.phase1VoltAmps                  .field)
-    allFields.put("SDM630_Phase_2_volt_amps_VA",                            sdm630.measurements.phase2VoltAmps                  .field)
-    allFields.put("SDM630_Phase_3_volt_amps_VA",                            sdm630.measurements.phase3VoltAmps                  .field)
-    allFields.put("SDM630_Phase_1_volt_amps_reactive_VAr",                  sdm630.measurements.phase1ReactivePower             .field)
-    allFields.put("SDM630_Phase_2_volt_amps_reactive_VAr",                  sdm630.measurements.phase2ReactivePower             .field)
-    allFields.put("SDM630_Phase_3_volt_amps_reactive_VAr",                  sdm630.measurements.phase3ReactivePower             .field)
-    allFields.put("SDM630_Phase_1_power_factor__1_",                        sdm630.measurements.phase1PowerFactor               .field)
-    allFields.put("SDM630_Phase_2_power_factor__1_",                        sdm630.measurements.phase2PowerFactor               .field)
-    allFields.put("SDM630_Phase_3_power_factor__1_",                        sdm630.measurements.phase3PowerFactor               .field)
-    allFields.put("SDM630_Phase_1_phase_angle_Degrees",                     sdm630.measurements.phase1PhaseAngle                .field)
-    allFields.put("SDM630_Phase_2_phase_angle_Degrees",                     sdm630.measurements.phase2PhaseAngle                .field)
-    allFields.put("SDM630_Phase_3_phase_angle_Degrees",                     sdm630.measurements.phase3PhaseAngle                .field)
-    allFields.put("SDM630_Average_line_to_neutral_volts_Volts",             sdm630.measurements.averageLineToNeutralVolts       .field)
-    allFields.put("SDM630_Average_line_current_Amps",                       sdm630.measurements.averageLineCurrent              .field)
-    allFields.put("SDM630_Sum_of_line_currents_Amps",                       sdm630.measurements.sumOfLineCurrents               .field)
-    allFields.put("SDM630_Total_system_power_Watts",                        sdm630.measurements.totalSystemPower                .field)
-    allFields.put("SDM630_Total_system_volt_amps_VA",                       sdm630.measurements.totalSystemVoltAmps             .field)
-    allFields.put("SDM630_Total_system_VAr_VAr",                            sdm630.measurements.totalSystemVAr                  .field)
-    allFields.put("SDM630_Total_system_power_factor__1_",                   sdm630.measurements.totalSystemPowerFactor          .field)
-    allFields.put("SDM630_Total_system_phase_angle_Degrees",                sdm630.measurements.totalSystemPhaseAngle           .field)
-    allFields.put("SDM630_Frequency_of_supply_voltages_Hz",                 sdm630.measurements.frequencyOfSupplyVoltages       .field)
-    allFields.put("SDM630_Import_Wh_since_last_reset_2__kWh_MWh",           sdm630.measurements.totalImportKWh                  .field)
-    allFields.put("SDM630_Export_Wh_since_last_reset_2__kWH_MWh",           sdm630.measurements.totalExportKWh                  .field)
-    allFields.put("SDM630_Import_VArh_since_last_reset_2__kVArh_MVArh",     sdm630.measurements.totalImportKVArh                .field)
-    allFields.put("SDM630_Export_VArh_since_last_reset_2__kVArh_MVArh",     sdm630.measurements.totalExportKVArh                .field)
-    allFields.put("SDM630_VAh_since_last_reset__2__kVAh_MVAh",              sdm630.measurements.totalVAh                        .field)
-    allFields.put("SDM630_Ah_since_last_reset__3__Ah_kAh",                  sdm630.measurements.ah                              .field)
-    allFields.put("SDM630_Total_system_power_demand__4__W",                 sdm630.measurements.totalSystemPowerDemand          .field)
-    allFields.put("SDM630_Maximum_total_system_power_demand_4__VA",         sdm630.measurements.maximumTotalSystemPowerDemand   .field)
-    allFields.put("SDM630_Total_system_VA_demand_VA",                       sdm630.measurements.totalSystemVADemand             .field)
-    allFields.put("SDM630_Maximum_total_VA_system_demand_VA",               sdm630.measurements.maximumTotalSystemPowerDemand   .field)
-    allFields.put("SDM630_Neutral_current_demand_Amps",                     sdm630.measurements.neutralCurrentDemand            .field)
-    allFields.put("SDM630_Maximum_neutral_current_demand_Amps",             sdm630.measurements.maximumNeutralCurrentDemand     .field)
-    allFields.put("SDM630_Line_1_to_Line_2_volts_Volts",                    sdm630.measurements.line1ToLine2Volts               .field)
-    allFields.put("SDM630_Line_2_to_Line_3_volts_Volts",                    sdm630.measurements.line2ToLine3Volts               .field)
-    allFields.put("SDM630_Line_3_to_Line_1_volts_Volts",                    sdm630.measurements.line3ToLine1Volts               .field)
-    allFields.put("SDM630_Average_line_to_line_volts_Volts",                sdm630.measurements.averageLineToLineVolts          .field)
-    allFields.put("SDM630_Neutral_current_Amps",                            sdm630.measurements.neutralCurrent                  .field)
-    allFields.put("SDM630_Phase_1_L_N_volts_THD_Pct",                       sdm630.measurements.phase1LNVoltsTHD                .field)
-    allFields.put("SDM630_Phase_2_L_N_volts_THD_Pct",                       sdm630.measurements.phase2LNVoltsTHD                .field)
-    allFields.put("SDM630_Phase_3_L_N_volts_THD_Pct",                       sdm630.measurements.phase3LNVoltsTHD                .field)
-    allFields.put("SDM630_Phase_1_Current_THD_Pct",                         sdm630.measurements.phase1CurrentTHD                .field)
-    allFields.put("SDM630_Phase_2_Current_THD_Pct",                         sdm630.measurements.phase2CurrentTHD                .field)
-    allFields.put("SDM630_Phase_3_Current_THD_Pct",                         sdm630.measurements.phase3CurrentTHD                .field)
-    allFields.put("SDM630_Average_line_to_neutral_volts_THD_Pct",           sdm630.measurements.averageLineToNeutralVoltsTHD    .field)
-    allFields.put("SDM630_Average_line_current_THD_Pct",                    sdm630.measurements.averageLineCurrentTHD           .field)
-    allFields.put("SDM630_Total_system_power_factor__5__Degrees",           sdm630.measurements.totalSystemPowerFactor          .field)
-    allFields.put("SDM630_Phase_1_current_demand_Amps",                     sdm630.measurements.phase1CurrentDemand             .field)
-    allFields.put("SDM630_Phase_2_current_demand_Amps",                     sdm630.measurements.phase2CurrentDemand             .field)
-    allFields.put("SDM630_Phase_3_current_demand_Amps",                     sdm630.measurements.phase3CurrentDemand             .field)
-    allFields.put("SDM630_Maximum_phase_1_current_demand_Amps",             sdm630.measurements.maximumPhase1CurrentDemand      .field)
-    allFields.put("SDM630_Maximum_phase_2_current_demand_Amps",             sdm630.measurements.maximumPhase2CurrentDemand      .field)
-    allFields.put("SDM630_Maximum_phase_3_current_demand_Amps",             sdm630.measurements.maximumPhase3CurrentDemand      .field)
-    allFields.put("SDM630_Line_1_to_line_2_volts_THD_Pct",                  sdm630.measurements.line1ToLine2VoltsTHD            .field)
-    allFields.put("SDM630_Line_2_to_line_3_volts_THD_Pct",                  sdm630.measurements.line2ToLine3VoltsTHD            .field)
-    allFields.put("SDM630_Line_3_to_line_1_volts_THD_Pct",                  sdm630.measurements.line3ToLine1VoltsTHD            .field)
-    allFields.put("SDM630_Average_line_to_line_volts_THD_Pct",              sdm630.measurements.averageLineToLineVoltsTHD       .field)
-    allFields.put("SDM630_Total_kWh_kWh",                                   sdm630.measurements.totalKWh                        .field)
-    allFields.put("SDM630_Total_kVArh_kVArh",                               sdm630.measurements.totalKVArh                      .field)
-    allFields.put("SDM630_L1_import_kWh_kWh",                               sdm630.measurements.l1ImportKWh                     .field)
-    allFields.put("SDM630_L2_import_kWh_kWh",                               sdm630.measurements.l2ImportKWh                     .field)
-    allFields.put("SDM630_L3_import_kWh_kWh",                               sdm630.measurements.l3ImportKWh                     .field)
-    allFields.put("SDM630_L1_export_kWh_kWh",                               sdm630.measurements.l1ExportKWh                     .field)
-    allFields.put("SDM630_L2_export_kWh_kWh",                               sdm630.measurements.l2ExportKWh                     .field)
-    allFields.put("SDM630_L3_export_kWh_kWh",                               sdm630.measurements.l3ExportKWh                     .field)
-    allFields.put("SDM630_L1_total_kWh_kWh",                                sdm630.measurements.l1TotalKWh                      .field)
-    allFields.put("SDM630_L2_total_kWh_kWh",                                sdm630.measurements.l2TotalKWh                      .field)
-    allFields.put("SDM630_L3_total_kWh_kWh",                                sdm630.measurements.l3TotalKWh                      .field)
-    allFields.put("SDM630_L1_import_kVArh_kVArh",                           sdm630.measurements.l1ImportKVArh                   .field)
-    allFields.put("SDM630_L2_import_kVArh_kVArh",                           sdm630.measurements.l2ImportKVArh                   .field)
-    allFields.put("SDM630_L3_import_kVArh_kVArh",                           sdm630.measurements.l3ImportKVArh                   .field)
-    allFields.put("SDM630_L1_export_kVArh_kVArh",                           sdm630.measurements.l1ExportKVArh                   .field)
-    allFields.put("SDM630_L2_export_kVArh_kVArh",                           sdm630.measurements.l2ExportKVArh                   .field)
-    allFields.put("SDM630_L3_export_kVArh_kVArh",                           sdm630.measurements.l3ExportKVArh                   .field)
-    allFields.put("SDM630_L1_total_kVArh_kVArh",                            sdm630.measurements.l1TotalKVArh                    .field)
-    allFields.put("SDM630_L2_total_kVArh_kVArh",                            sdm630.measurements.l2TotalKVArh                    .field)
-    allFields.put("SDM630_L3_total_kVArh_kVArh",                            sdm630.measurements.l3TotalKVArh                    .field)
+    allFields["SDM630_Phase_1_line_to_neutral_volts_Volts"] =           sdm630.measurements.phase1LineToNeutralVolts        .field
+    allFields["SDM630_Phase_2_line_to_neutral_volts_Volts"] =           sdm630.measurements.phase2LineToNeutralVolts        .field
+    allFields["SDM630_Phase_3_line_to_neutral_volts_Volts"] =           sdm630.measurements.phase3LineToNeutralVolts        .field
+    allFields["SDM630_Phase_1_current_Amps"] =                          sdm630.measurements.phase1Current                   .field
+    allFields["SDM630_Phase_2_current_Amps"] =                          sdm630.measurements.phase2Current                   .field
+    allFields["SDM630_Phase_3_current_Amps"] =                          sdm630.measurements.phase3Current                   .field
+    allFields["SDM630_Phase_1_power_Watts"] =                           sdm630.measurements.phase1Power                     .field
+    allFields["SDM630_Phase_2_power_Watts"] =                           sdm630.measurements.phase2Power                     .field
+    allFields["SDM630_Phase_3_power_Watts"] =                           sdm630.measurements.phase3Power                     .field
+    allFields["SDM630_Phase_1_volt_amps_VA"] =                          sdm630.measurements.phase1VoltAmps                  .field
+    allFields["SDM630_Phase_2_volt_amps_VA"] =                          sdm630.measurements.phase2VoltAmps                  .field
+    allFields["SDM630_Phase_3_volt_amps_VA"] =                          sdm630.measurements.phase3VoltAmps                  .field
+    allFields["SDM630_Phase_1_volt_amps_reactive_VAr"] =                sdm630.measurements.phase1ReactivePower             .field
+    allFields["SDM630_Phase_2_volt_amps_reactive_VAr"] =                sdm630.measurements.phase2ReactivePower             .field
+    allFields["SDM630_Phase_3_volt_amps_reactive_VAr"] =                sdm630.measurements.phase3ReactivePower             .field
+    allFields["SDM630_Phase_1_power_factor__1_"] =                      sdm630.measurements.phase1PowerFactor               .field
+    allFields["SDM630_Phase_2_power_factor__1_"] =                      sdm630.measurements.phase2PowerFactor               .field
+    allFields["SDM630_Phase_3_power_factor__1_"] =                      sdm630.measurements.phase3PowerFactor               .field
+    allFields["SDM630_Phase_1_phase_angle_Degrees"] =                   sdm630.measurements.phase1PhaseAngle                .field
+    allFields["SDM630_Phase_2_phase_angle_Degrees"] =                   sdm630.measurements.phase2PhaseAngle                .field
+    allFields["SDM630_Phase_3_phase_angle_Degrees"] =                   sdm630.measurements.phase3PhaseAngle                .field
+    allFields["SDM630_Average_line_to_neutral_volts_Volts"] =           sdm630.measurements.averageLineToNeutralVolts       .field
+    allFields["SDM630_Average_line_current_Amps"] =                     sdm630.measurements.averageLineCurrent              .field
+    allFields["SDM630_Sum_of_line_currents_Amps"] =                     sdm630.measurements.sumOfLineCurrents               .field
+    allFields["SDM630_Total_system_power_Watts"] =                      sdm630.measurements.totalSystemPower                .field
+    allFields["SDM630_Total_system_volt_amps_VA"] =                     sdm630.measurements.totalSystemVoltAmps             .field
+    allFields["SDM630_Total_system_VAr_VAr"] =                          sdm630.measurements.totalSystemVAr                  .field
+    allFields["SDM630_Total_system_power_factor__1_"] =                 sdm630.measurements.totalSystemPowerFactor          .field
+    allFields["SDM630_Total_system_phase_angle_Degrees"] =              sdm630.measurements.totalSystemPhaseAngle           .field
+    allFields["SDM630_Frequency_of_supply_voltages_Hz"] =               sdm630.measurements.frequencyOfSupplyVoltages       .field
+    allFields["SDM630_Import_Wh_since_last_reset_2__kWh_MWh"] =         sdm630.measurements.totalImportKWh                  .field
+    allFields["SDM630_Export_Wh_since_last_reset_2__kWH_MWh"] =         sdm630.measurements.totalExportKWh                  .field
+    allFields["SDM630_Import_VArh_since_last_reset_2__kVArh_MVArh"] =   sdm630.measurements.totalImportKVArh                .field
+    allFields["SDM630_Export_VArh_since_last_reset_2__kVArh_MVArh"] =   sdm630.measurements.totalExportKVArh                .field
+    allFields["SDM630_VAh_since_last_reset__2__kVAh_MVAh"] =            sdm630.measurements.totalVAh                        .field
+    allFields["SDM630_Ah_since_last_reset__3__Ah_kAh"] =                sdm630.measurements.ah                              .field
+    allFields["SDM630_Total_system_power_demand__4__W"] =               sdm630.measurements.totalSystemPowerDemand          .field
+    allFields["SDM630_Maximum_total_system_power_demand_4__VA"] =       sdm630.measurements.maximumTotalSystemPowerDemand   .field
+    allFields["SDM630_Total_system_VA_demand_VA"] =                     sdm630.measurements.totalSystemVADemand             .field
+    allFields["SDM630_Maximum_total_VA_system_demand_VA"] =             sdm630.measurements.maximumTotalSystemPowerDemand   .field
+    allFields["SDM630_Neutral_current_demand_Amps"] =                   sdm630.measurements.neutralCurrentDemand            .field
+    allFields["SDM630_Maximum_neutral_current_demand_Amps"] =           sdm630.measurements.maximumNeutralCurrentDemand     .field
+    allFields["SDM630_Line_1_to_Line_2_volts_Volts"] =                  sdm630.measurements.line1ToLine2Volts               .field
+    allFields["SDM630_Line_2_to_Line_3_volts_Volts"] =                  sdm630.measurements.line2ToLine3Volts               .field
+    allFields["SDM630_Line_3_to_Line_1_volts_Volts"] =                  sdm630.measurements.line3ToLine1Volts               .field
+    allFields["SDM630_Average_line_to_line_volts_Volts"] =              sdm630.measurements.averageLineToLineVolts          .field
+    allFields["SDM630_Neutral_current_Amps"] =                          sdm630.measurements.neutralCurrent                  .field
+    allFields["SDM630_Phase_1_L_N_volts_THD_Pct"] =                     sdm630.measurements.phase1LNVoltsTHD                .field
+    allFields["SDM630_Phase_2_L_N_volts_THD_Pct"] =                     sdm630.measurements.phase2LNVoltsTHD                .field
+    allFields["SDM630_Phase_3_L_N_volts_THD_Pct"] =                     sdm630.measurements.phase3LNVoltsTHD                .field
+    allFields["SDM630_Phase_1_Current_THD_Pct"] =                       sdm630.measurements.phase1CurrentTHD                .field
+    allFields["SDM630_Phase_2_Current_THD_Pct"] =                       sdm630.measurements.phase2CurrentTHD                .field
+    allFields["SDM630_Phase_3_Current_THD_Pct"] =                       sdm630.measurements.phase3CurrentTHD                .field
+    allFields["SDM630_Average_line_to_neutral_volts_THD_Pct"] =         sdm630.measurements.averageLineToNeutralVoltsTHD    .field
+    allFields["SDM630_Average_line_current_THD_Pct"] =                  sdm630.measurements.averageLineCurrentTHD           .field
+    allFields["SDM630_Total_system_power_factor__5__Degrees"] =         sdm630.measurements.totalSystemPowerFactor          .field
+    allFields["SDM630_Phase_1_current_demand_Amps"] =                   sdm630.measurements.phase1CurrentDemand             .field
+    allFields["SDM630_Phase_2_current_demand_Amps"] =                   sdm630.measurements.phase2CurrentDemand             .field
+    allFields["SDM630_Phase_3_current_demand_Amps"] =                   sdm630.measurements.phase3CurrentDemand             .field
+    allFields["SDM630_Maximum_phase_1_current_demand_Amps"] =           sdm630.measurements.maximumPhase1CurrentDemand      .field
+    allFields["SDM630_Maximum_phase_2_current_demand_Amps"] =           sdm630.measurements.maximumPhase2CurrentDemand      .field
+    allFields["SDM630_Maximum_phase_3_current_demand_Amps"] =           sdm630.measurements.maximumPhase3CurrentDemand      .field
+    allFields["SDM630_Line_1_to_line_2_volts_THD_Pct"] =                sdm630.measurements.line1ToLine2VoltsTHD            .field
+    allFields["SDM630_Line_2_to_line_3_volts_THD_Pct"] =                sdm630.measurements.line2ToLine3VoltsTHD            .field
+    allFields["SDM630_Line_3_to_line_1_volts_THD_Pct"] =                sdm630.measurements.line3ToLine1VoltsTHD            .field
+    allFields["SDM630_Average_line_to_line_volts_THD_Pct"] =            sdm630.measurements.averageLineToLineVoltsTHD       .field
+    allFields["SDM630_Total_kWh_kWh"] =                                 sdm630.measurements.totalKWh                        .field
+    allFields["SDM630_Total_kVArh_kVArh"] =                             sdm630.measurements.totalKVArh                      .field
+    allFields["SDM630_L1_import_kWh_kWh"] =                             sdm630.measurements.l1ImportKWh                     .field
+    allFields["SDM630_L2_import_kWh_kWh"] =                             sdm630.measurements.l2ImportKWh                     .field
+    allFields["SDM630_L3_import_kWh_kWh"] =                             sdm630.measurements.l3ImportKWh                     .field
+    allFields["SDM630_L1_export_kWh_kWh"] =                             sdm630.measurements.l1ExportKWh                     .field
+    allFields["SDM630_L2_export_kWh_kWh"] =                             sdm630.measurements.l2ExportKWh                     .field
+    allFields["SDM630_L3_export_kWh_kWh"] =                             sdm630.measurements.l3ExportKWh                     .field
+    allFields["SDM630_L1_total_kWh_kWh"] =                              sdm630.measurements.l1TotalKWh                      .field
+    allFields["SDM630_L2_total_kWh_kWh"] =                              sdm630.measurements.l2TotalKWh                      .field
+    allFields["SDM630_L3_total_kWh_kWh"] =                              sdm630.measurements.l3TotalKWh                      .field
+    allFields["SDM630_L1_import_kVArh_kVArh"] =                         sdm630.measurements.l1ImportKVArh                   .field
+    allFields["SDM630_L2_import_kVArh_kVArh"] =                         sdm630.measurements.l2ImportKVArh                   .field
+    allFields["SDM630_L3_import_kVArh_kVArh"] =                         sdm630.measurements.l3ImportKVArh                   .field
+    allFields["SDM630_L1_export_kVArh_kVArh"] =                         sdm630.measurements.l1ExportKVArh                   .field
+    allFields["SDM630_L2_export_kVArh_kVArh"] =                         sdm630.measurements.l2ExportKVArh                   .field
+    allFields["SDM630_L3_export_kVArh_kVArh"] =                         sdm630.measurements.l3ExportKVArh                   .field
+    allFields["SDM630_L1_total_kVArh_kVArh"] =                          sdm630.measurements.l1TotalKVArh                    .field
+    allFields["SDM630_L2_total_kVArh_kVArh"] =                          sdm630.measurements.l2TotalKVArh                    .field
+    allFields["SDM630_L3_total_kVArh_kVArh"] =                          sdm630.measurements.l3TotalKVArh                    .field
 
     // Make sure we are going to fetch all the indicated fields.
     allFields.forEach { (_, field) -> field.need() }
