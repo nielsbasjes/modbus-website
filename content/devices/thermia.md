@@ -25,10 +25,10 @@ Official Modbus mappings:
 
 - Status: **All registers and discretes in the documentation have been put into the schema definition.**
 
-- Schema as Yaml: [ThermiaGenesis101213.yaml](https://github.com/nielsbasjes/modbus-devices/blob/main/modbus-device-thermia-genesis/ThermiaGenesis101213.yaml)
+- Schema as YAML: [ThermiaGenesis101213.yaml](https://github.com/nielsbasjes/modbus-devices/blob/main/modbus-device-thermia-genesis/ThermiaGenesis101213.yaml)
 
 I have also created for version 13 a schema where all Fields have been put into blocks based on the area of use (the "Reference to" column in the original PDFs)
-- Schema as Yaml: [ThermiaGenesis13.yaml](https://github.com/nielsbasjes/modbus-devices/blob/main/modbus-device-thermia-genesis/ThermiaGenesis13.yaml)
+- Schema as YAML: [ThermiaGenesis13.yaml](https://github.com/nielsbasjes/modbus-devices/blob/main/modbus-device-thermia-genesis/ThermiaGenesis13.yaml)
 
 The schema is also available as pre generated Kotlin code.
 {{< tabs >}}
