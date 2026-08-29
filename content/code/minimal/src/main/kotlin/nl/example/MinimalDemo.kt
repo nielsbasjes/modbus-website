@@ -11,7 +11,7 @@ fun doMinimalExample() {
 
     print("Modbus: Connecting...")
     // Connect to the real Modbus device over TCP using the Apache PLC4J library
-    ModbusDevicePlc4j("modbus-tcp:tcp://${modbusIp}:${modbusPort}?unit-identifier=${modbusUnit}")
+    ModbusDevicePlc4j("modbus-tcp:tcp://${modbusIp}:${modbusPort}?default-unit-identifier=${modbusUnit}")
         .use { modbusDevice ->
             println(" done")
 

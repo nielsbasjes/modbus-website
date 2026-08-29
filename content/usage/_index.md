@@ -221,7 +221,7 @@ val hostname = "modbus.iot.basjes.nl"
 val port     = MODBUS_STANDARD_TCP_PORT
 val unitId   = 1
 
-val connectionString = "modbus-tcp:tcp://$hostname:$port?unit-identifier=$unitId"
+val connectionString = "modbus-tcp:tcp://$hostname:$port?default-unit-identifier=$unitId"
 
 print("Connecting...")
 ModbusDevicePlc4j(connectionString).use { modbusDevice ->
