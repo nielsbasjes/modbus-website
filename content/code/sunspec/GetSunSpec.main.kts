@@ -1,7 +1,7 @@
 #!/usr/bin/env -S kotlin -howtorun .main.kts 
 
 // Include the needed libraries
-@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.14.0")
+@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.15.0")
 @file:DependsOn("nl.basjes.sunspec:sunspec-device:0.7.3")
 
 // Regular Kotlin import statements

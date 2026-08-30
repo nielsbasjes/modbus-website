@@ -1,7 +1,7 @@
 #!/usr/bin/env -S kotlin -howtorun .main.kts 
 
-@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.14.0")
-@file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.14.0")
+@file:DependsOn("nl.basjes.modbus:modbus-api-j2mod:0.15.0")
+@file:DependsOn("nl.basjes.modbus:modbus-schema-device:0.15.0")
 @file:DependsOn("nl.basjes.modbus.devices:modbus-device-sdm630:0.6.2")
 @file:DependsOn("com.influxdb:influxdb-client-java:7.3.0")
 @file:DependsOn("org.apache.logging.log4j:log4j-to-slf4j:2.24.3")
